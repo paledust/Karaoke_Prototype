@@ -1,2 +1,18 @@
 ﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="DevBasic.StateMachine.csproj" />
+  <Project Path="UniTask.Linq.csproj" />
+  <Project Path="DevBasic.Guid.csproj" />
+  <Project Path="UniTask.csproj" />
+  <Project Path="DevBasic.AudioSystem.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="DevBasic.GameManager.csproj" />
+  <Project Path="DevBasic.SimpleSave.csproj" />
+  <Project Path="UniTask.DOTween.csproj" />
+  <Project Path="DevBasic.CS_Bezier.csproj" />
+  <Project Path="DevUtil.csproj" />
+  <Project Path="DrawExtension.csproj" />
+  <Project Path="UniTask.Editor.csproj" />
+  <Project Path="UniTask.TextMeshPro.csproj" />
+  <Project Path="UniTask.Addressables.csproj" />
 </Solution>
