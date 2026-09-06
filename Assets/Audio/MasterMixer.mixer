@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-6322384470809323941
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Recording
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 95ac26b0051f715449f49c733d307ea0
+  m_Children: []
+  m_Volume: a7f3d710389d15349b6768e6da7a4af9
+  m_Pitch: 017b8c758151743479183dca7d08398f
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -4544768051049681165}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-4544768051049681165
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 48cfb6a5a5cced24ea10d574d3957090
+  m_EffectName: Attenuation
+  m_MixLevel: 0e46e779b1c9506459fc35556ee3b30c
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -21,6 +54,7 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - a835fe63c6f075a43a4e96ac8f0da1c5
+    - 95ac26b0051f715449f49c733d307ea0
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -33,7 +67,8 @@ AudioMixerGroupController:
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a835fe63c6f075a43a4e96ac8f0da1c5
-  m_Children: []
+  m_Children:
+  - {fileID: -6322384470809323941}
   m_Volume: 1de5e6df9c886154c96fb3b118db07f6
   m_Pitch: 104dc586f6046b84fb4c460107d82086
   m_Send: 00000000000000000000000000000000
@@ -66,5 +101,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 48267545a56e7a64c863bb8083884007
-  m_FloatValues: {}
+  m_FloatValues:
+    a7f3d710389d15349b6768e6da7a4af9: -80
+    fcf19f6befc0efa45a4d05114de0d9b0: 80
+    35b2e6ec0cbb53b4da48c104d802a590: 800
   m_TransitionOverrides: {}

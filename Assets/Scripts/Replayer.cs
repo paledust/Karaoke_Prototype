@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class Replayer : MonoBehaviour
 {
-    [SerializeField] private MicInput mic;
+    [SerializeField] private RecordingControl mic;
     private bool isPlaying;
     private AudioSource m_audio;
+    public AudioSource replaySource => m_audio;
 
     private void Start()
     {
@@ -29,7 +30,6 @@ public class Replayer : MonoBehaviour
                 isPlaying = true;
                 m_audio.mute = false;
                 m_audio.Play();
-                mic.LoadClip(m_audio.clip);
             }
         }
         else
