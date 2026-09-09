@@ -61,13 +61,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faa6b2f5b08d33458e6deef412b8bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallControl
-  pitchRange: {x: 100, y: 600}
-  moveScale: 5
-  sizeScale: 10
+  baseNote: 4
+  baseOctave: 2
+  pitchRange: 14
   ballTrans: {fileID: 0}
-  audioAnalyzer: {fileID: 7193224375991004452}
   lerp: 20
-  demo: 0
+  moveRange: {x: -3, y: 5}
+  size: 0
+  sizeScale: 10
+  audioAnalyzer: {fileID: 7193224375991004452}
 --- !u!114 &7193224375991004452
 MonoBehaviour:
   m_ObjectHideFlags: 0

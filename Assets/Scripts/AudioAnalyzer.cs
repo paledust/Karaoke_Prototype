@@ -75,4 +75,14 @@ public class AudioAnalyzer : MonoBehaviour
             m_freq = 0;
         }
     }
+
+    public static Vector2 GetFreqRange(int noteLevel, int octave, int levelRange)
+    {
+        float refValue = Mathf.Log10(2f);
+        int startNote = noteLevel + octave * 12;
+        int endNote = startNote + levelRange;
+        float startFreq = Mathf.Pow(10, (startNote - 57) * refValue / 12.0f) * 440f;
+        float endFreq = Mathf.Pow(10, (endNote - 57) * refValue / 12.0f) * 440f;
+        return new Vector2(startFreq, endFreq);
+    }
 }
