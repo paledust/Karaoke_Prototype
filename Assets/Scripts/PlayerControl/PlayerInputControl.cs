@@ -4,12 +4,18 @@ using UnityEngine.InputSystem;
 public class PlayerInputControl : MonoBehaviour
 {
     [SerializeField] private InputAction recordingKey;
+
     [Header("Recording Source")]
     [SerializeField] private AudioSource recordingSource;
 
-    private string device;
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+
     private AudioClip recordingClip;
+    private string device;
     private bool isRecording;
+
+    private const string ANIM_SINGING_BOOL = "IsSinging";
 
     void Awake()
     {
@@ -36,6 +42,8 @@ public class PlayerInputControl : MonoBehaviour
         if(isRecording)
             return;
         isRecording = true;
+        //Change Animation
+        animator.SetBool(ANIM_SINGING_BOOL, true);
         //Record with Audio Source
         recordingSource.Stop();
         recordingClip = Microphone.Start(device, true, 5, AudioSettings.outputSampleRate);
@@ -48,6 +56,7 @@ public class PlayerInputControl : MonoBehaviour
         if(!isRecording)
             return;
         isRecording = false;
+        animator.SetBool(ANIM_SINGING_BOOL, false);
         recordingSource.Stop();
         Microphone.End(device);
     }
