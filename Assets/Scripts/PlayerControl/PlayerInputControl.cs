@@ -50,6 +50,8 @@ public class PlayerInputControl : MonoBehaviour
         while (!(Microphone.GetPosition(device) > 0.02f)) {}
         recordingSource.clip = recordingClip;
         recordingSource.Play();
+
+        PlayerSingingEvent.Call_OnPlayerStartToSing();
     }
     void StopRecording(InputAction.CallbackContext context)
     {
@@ -59,5 +61,7 @@ public class PlayerInputControl : MonoBehaviour
         animator.SetBool(ANIM_SINGING_BOOL, false);
         recordingSource.Stop();
         Microphone.End(device);
+
+        PlayerSingingEvent.Call_OnPlayerStopSinging();
     }
 }
