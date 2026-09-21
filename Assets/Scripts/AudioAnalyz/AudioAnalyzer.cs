@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioAnalyzer : MonoBehaviour
 {
@@ -54,7 +53,6 @@ public class AudioAnalyzer : MonoBehaviour
             m_freq = 0;
             return;
         }
-        float deviation = 0.0f;
         float freq = PitchDetectorGetFreq(0);
         m_freq = freq;
         frequency = freq.ToString() + " Hz";
