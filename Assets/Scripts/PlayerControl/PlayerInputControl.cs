@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using AudioAnalysis;
 
 public class PlayerInputControl : MonoBehaviour
 {
     [SerializeField] private InputAction recordingKey;
+
+    [Header("Audio Source")]
+    [SerializeField] private AudioAnalyzer analyzer;
 
     [Header("Recording Source")]
     [SerializeField] private AudioSource recordingSource;
@@ -51,7 +55,7 @@ public class PlayerInputControl : MonoBehaviour
         recordingSource.clip = recordingClip;
         recordingSource.Play();
 
-        PlayerSingingEvent.Call_OnPlayerStartToSing();
+        PlayerSingingEvent.Call_OnPlayerStartToSing(analyzer);
     }
     void StopRecording(InputAction.CallbackContext context)
     {

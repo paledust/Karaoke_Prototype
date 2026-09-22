@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 4508348038496530328}
   - component: {fileID: 7073336593823798500}
   - component: {fileID: 6052286842469345753}
+  - component: {fileID: 6651674100240091244}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -306,5 +307,22 @@ MonoBehaviour:
       m_Action: Recording Key
       m_Flags: 0
     m_Flags: 0
+  analyzer: {fileID: 6651674100240091244}
   recordingSource: {fileID: 7870586669602458367}
   animator: {fileID: 7073336593823798500}
+--- !u!114 &6651674100240091244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500050492512512407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653610243d303fe499e9b9dda4151555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioAnalyzer
+  frequency: detected frequency
+  note: detected note
+  volumeGate: 0.01
+  targetAudio: {fileID: 7870586669602458367}
