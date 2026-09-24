@@ -3233,6 +3233,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!82 &1926229879 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1871765971551280536, guid: 09e065082d5b0ad46b6550e1357ff476, type: 3}
+  m_PrefabInstance: {fileID: 5179566860524720466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1949523355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,6 +3902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: record_control
       objectReference: {fileID: 0}
+    - target: {fileID: 7193224375991004452, guid: 09e065082d5b0ad46b6550e1357ff476, type: 3}
+      propertyPath: targetAudio
+      value: 
+      objectReference: {fileID: 1926229879}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

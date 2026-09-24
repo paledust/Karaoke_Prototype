@@ -5,32 +5,27 @@ namespace AudioAnalysis
 {
     public class AudioAnalyzer : MonoBehaviour
     {
-        [SerializeField, ShowOnly] private string frequency = "detected frequency";
-        [SerializeField, ShowOnly] private string note = "detected note";
-        [SerializeField] private float volumeGate = 0.01f;
         [SerializeField] private AudioSource targetAudio;
-        
+
         [DllImport("AudioPluginDemo")]
         private static extern float PitchDetectorGetFreq(int index);
 
         public int m_noteIndex { get; private set; } = 0;
+        public int m_rowPitchIndex {get; private set;} = 0;
         public float m_volumeLevel { get; private set; } = 0;
         public float m_freq { get; private set; } = 0;
-        
+        public string m_note {get; private set; } = "unknown";
         private readonly static string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-        void Start()
-        {
-            targetAudio = GetComponent<AudioSource>();
-        }
         // Update is called once per frame
         void Update()
         {
             //Volume Detection
             if (!targetAudio.isPlaying)
             {
-                note = "unknown";
+                m_note = "unknown";
                 m_noteIndex = 0;
+                m_rowPitchIndex = 0;
                 m_freq = 0;
                 m_volumeLevel = 0;
                 
@@ -48,30 +43,23 @@ namespace AudioAnalysis
             m_volumeLevel = sum;
             
             //Pitch Detection
-            if (m_volumeLevel < volumeGate)
-            {
-                note = "unknown";
-                m_noteIndex = 0;
-                m_freq = 0;
-                return;
-            }
-            float freq = PitchDetectorGetFreq(0);
-            m_freq = freq;
-            frequency = freq.ToString() + " Hz";
+            m_freq = PitchDetectorGetFreq(0);
 
-            if (freq > 0.0f)
+            if (m_freq > 0.0f)
             {
-                float noteval = 57.0f + 12.0f * Mathf.Log10(freq / 440.0f) / Mathf.Log10(2.0f);
-                float f = Mathf.Floor(noteval + 0.5f);
+                float noteval = 57.0f + 12.0f * Mathf.Log10(m_freq / 440.0f) / Mathf.Log10(2.0f);
+                int f = Mathf.FloorToInt(noteval + 0.5f);
                 
-                m_noteIndex = (int)f % 12;
-                int octave = (int)Mathf.Floor((noteval + 0.5f) / 12.0f);
-                note = noteNames[m_noteIndex] + " " + octave;
+                m_rowPitchIndex = f;
+                m_noteIndex = f % 12;
+                int octave = Mathf.FloorToInt((noteval + 0.5f) / 12.0f);
+                m_note = noteNames[m_noteIndex] + " " + octave;
             }
             else
             {
-                note = "unknown";
+                m_note = "unknown";
                 m_noteIndex = 0;
+                m_rowPitchIndex = 0;
                 m_freq = 0;
             }
         }

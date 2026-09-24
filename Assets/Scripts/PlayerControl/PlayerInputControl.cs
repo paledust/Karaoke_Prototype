@@ -15,9 +15,9 @@ public class PlayerInputControl : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
-    private AudioClip recordingClip;
-    private string device;
     private bool isRecording;
+    private string device;
+    private AudioClip recordingClip;
 
     private const string ANIM_SINGING_BOOL = "IsSinging";
 
@@ -50,9 +50,10 @@ public class PlayerInputControl : MonoBehaviour
         animator.SetBool(ANIM_SINGING_BOOL, true);
         //Record with Audio Source
         recordingSource.Stop();
-        recordingClip = Microphone.Start(device, true, 5, AudioSettings.outputSampleRate);
+        recordingClip = Microphone.Start(device, true, 1, AudioSettings.outputSampleRate);
         while (!(Microphone.GetPosition(device) > 0.02f)) {}
         recordingSource.clip = recordingClip;
+        recordingSource.loop = true;
         recordingSource.Play();
 
         PlayerSingingEvent.Call_OnPlayerStartToSing(analyzer);
