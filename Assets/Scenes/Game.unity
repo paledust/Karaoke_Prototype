@@ -166,6 +166,7 @@ MonoBehaviour:
   audioAnalyzer: {fileID: 2064662690}
   frequency: detected frequency
   note: detected note
+  volume: 0
   mat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1459066657
 GameObject:

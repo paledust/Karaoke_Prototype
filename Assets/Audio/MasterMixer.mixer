@@ -120,9 +120,12 @@ AudioMixerSnapshotController:
   m_SnapshotID: 48267545a56e7a64c863bb8083884007
   m_FloatValues:
     a7f3d710389d15349b6768e6da7a4af9: -80
+    1d50bc407938d2d478eee56ab6687f03: 0.016
     4e89bf219a20ef94a89319818d35c97a: 0
+    9fbfafe2efd8aa943b4e5c665a426c89: 0
     535f9073cf8ad37419d4eeacb18e764c: 0.01
     12fc859444cac2c4c9bf27068294f660: -20
+    fd6611954e63f2e41876933c09d9dac9: 3140
     fcf19f6befc0efa45a4d05114de0d9b0: 80
     35b2e6ec0cbb53b4da48c104d802a590: 800
     1de5e6df9c886154c96fb3b118db07f6: 0
@@ -138,6 +141,28 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 8da479d5fe10475468252cc46020287a
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &6083944130852172493
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: a503ebfadb1c3b547ab6fd6cf637dc62
+  m_EffectName: Demo NoiseBox
+  m_MixLevel: bffd6a3746f995a459b1b8831c1a2aa4
+  m_Parameters:
+  - m_ParameterName: Add Amount
+    m_GUID: afbebec42bc11e84bb225fec69ba2b23
+  - m_ParameterName: Mul Amount
+    m_GUID: bd2386354be705944a1e3234a7f59ec9
+  - m_ParameterName: Add Frequency
+    m_GUID: d3242d8a85b9ac941851632677121f87
+  - m_ParameterName: Mul Frequency
+    m_GUID: 56910526c0ab0f04e851d1fe8e37529f
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

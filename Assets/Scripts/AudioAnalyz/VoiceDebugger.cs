@@ -7,6 +7,7 @@ public class VoiceDebugger : MonoBehaviour
     [SerializeField] private AudioAnalyzer audioAnalyzer;
     [SerializeField, ShowOnly] private string frequency = "detected frequency";
     [SerializeField, ShowOnly] private string note = "detected note";
+    [SerializeField, ShowOnly] private float volume;
 
     [Header("Draw Line")]
     [SerializeField] private Material mat;
@@ -23,6 +24,7 @@ public class VoiceDebugger : MonoBehaviour
     {
         frequency = audioAnalyzer.m_freq.ToString() + "Hz";
         note = audioAnalyzer.m_note;
+        volume = audioAnalyzer.m_volumeLevel;
     }
     Vector3 Plot(float[] data, int num, float x0, float y0, float w, float h, Color col, float thr)
     {

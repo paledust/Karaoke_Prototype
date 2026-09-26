@@ -1,7 +1,7 @@
 using AudioAnalysis;
 using UnityEngine;
 
-namespace VoicePrototype
+namespace WhisperPrototype
 {
     public class VoiceLimit : MonoBehaviour
     {

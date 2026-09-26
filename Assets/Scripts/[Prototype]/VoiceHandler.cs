@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VoicePrototype
+namespace WhisperPrototype
 {
     public class VoiceHandler : MonoBehaviour
     {

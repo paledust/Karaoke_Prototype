@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace VoicePrototype
+namespace WhisperPrototype
 {
     public class SpriteFader
     {

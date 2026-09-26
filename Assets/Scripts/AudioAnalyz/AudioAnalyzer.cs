@@ -38,7 +38,7 @@ namespace AudioAnalysis
             {
                 sum += samples[i] * samples[i];
             }
-            sum /= samples.Length;
+            sum /= (0f+samples.Length);
             sum = Mathf.Sqrt(sum);
             m_volumeLevel = sum;
             

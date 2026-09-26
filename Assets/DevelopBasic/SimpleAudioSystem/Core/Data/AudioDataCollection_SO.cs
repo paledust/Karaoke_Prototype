@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SimpleAudioSystem
 {
-    [CreateAssetMenu(fileName = "AudioDataCollection_SO", menuName = "DevelopBasic/AudioSystem/AudioDataCollection_SO")]
+    [CreateAssetMenu(fileName = "AudioDataCollection_SO", menuName = "Audio/AudioSystem/AudioDataCollection_SO")]
     public class AudioDataCollection_SO : ScriptableObject
     {
         public List<AudioData_SO> bgm_info_list;
