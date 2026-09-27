@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 374968285}
   - component: {fileID: 374968286}
   m_Layer: 0
-  m_Name: SingingManager
+  m_Name: WhisperManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,8 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dcd5cf6a1a6874a9638277c36473a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperingManager
+  whisperWordsCollection: {fileID: 11400000, guid: 781139a35c60e4247845c57670fb3826, type: 2}
   whisperSpectrum: {fileID: 11400000, guid: 0c7a28844bf09824d9a574431965ee65, type: 2}
-  pitchRange: {x: 28, y: 54}
+  octave: 3
   volumeRange: {x: 0, y: 0.3}
 --- !u!1 &400117799
 GameObject:

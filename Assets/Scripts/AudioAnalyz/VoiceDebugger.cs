@@ -5,9 +5,6 @@ using UnityEngine;
 public class VoiceDebugger : MonoBehaviour
 {
     [SerializeField] private AudioAnalyzer audioAnalyzer;
-    [SerializeField, ShowOnly] private string frequency = "detected frequency";
-    [SerializeField, ShowOnly] private string note = "detected note";
-    [SerializeField, ShowOnly] private float volume;
 
     [Header("Draw Line")]
     [SerializeField] private Material mat;
@@ -16,15 +13,24 @@ public class VoiceDebugger : MonoBehaviour
     private static extern float PitchDetectorGetFreq(int index);
     [DllImport("AudioPluginDemo")]
     private static extern int PitchDetectorDebug(float[] data);
-    
-    float[] history = new float[1000];
-    float[] debug = new float[65536];
 
-    void Update()
+    private GUIStyle debugStyle;
+    private float[] history = new float[1000];
+    private float[] debug = new float[65536];
+
+    void Awake()
     {
-        frequency = audioAnalyzer.m_freq.ToString() + "Hz";
-        note = audioAnalyzer.m_note;
-        volume = audioAnalyzer.m_volumeLevel;
+        debugStyle = new GUIStyle();
+        debugStyle.fontSize = 36;
+    }
+
+    void OnGUI()
+    {
+        GUILayout.Label("Freq: " + audioAnalyzer.m_freq.ToString() + "Hz", debugStyle);
+        GUILayout.Label("Note: " + audioAnalyzer.m_note, debugStyle);
+        GUILayout.Label("Volume Level: " + audioAnalyzer.m_volumeLevel.ToString(), debugStyle);
+        GUILayout.Label("Raw Pitch Index :" + audioAnalyzer.m_rawPitchIndex.ToString(), debugStyle);
+        GUILayout.Label("Pitch Index :" + audioAnalyzer.m_noteIndex.ToString(), debugStyle);
     }
     Vector3 Plot(float[] data, int num, float x0, float y0, float w, float h, Color col, float thr)
     {

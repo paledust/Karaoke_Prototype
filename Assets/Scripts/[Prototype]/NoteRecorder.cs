@@ -25,17 +25,22 @@ namespace WhisperPrototype
         [SerializeField] private Sprite shortNoteSprite;
         [SerializeField] private Sprite longNoteSprite;
 
+        [Header("Whisper")]
+        [SerializeField] private WhisperDecoder decoder;
+
         [Header("VFX")]
         [SerializeField] private ParticleSystem vfxNoteOnShow;
 
         private AudioAnalyzer audioAnalyzer;
         private List<NoteDisplayer> listNoteDisplayer;
+        private List<int> listNotes;
         private NoteDisplayer currentBuildingDisplayer;
         private float stateTimer;
         
         void Awake()
         {
             listNoteDisplayer = new List<NoteDisplayer>();
+            listNotes = new List<int>();
             recordingState = NoteRecordingState.Pending;
             // Clean Up all placeholder note
             foreach(Transform placeHolder in noteSlot)
@@ -80,7 +85,7 @@ namespace WhisperPrototype
                     return;
                 case NoteRecordingState.Recording:
                     stateTimer += Time.deltaTime;
-                    currentBuildingDisplayer.UpdateNote(WhisperingManager.GetSpectrumColor(audioAnalyzer.m_rowPitchIndex));
+                    currentBuildingDisplayer.UpdateNote(WhisperingManager.GetSpectrumColor(audioAnalyzer.m_rawPitchIndex));
 
                     if(audioAnalyzer.m_volumeLevel < Mathf.Max(0, volumeGate - volumeTolerance))
                     {
@@ -89,6 +94,7 @@ namespace WhisperPrototype
                             recordingState = NoteRecordingState.Concluding;
                             stateTimer = 0;
 
+                            listNotes.Add(WhisperingManager.GetValidatePitchIndex(audioAnalyzer.m_rawPitchIndex));
                             currentBuildingDisplayer.ReleaseNote();
                             currentBuildingDisplayer = null;
                             return;
@@ -145,15 +151,30 @@ namespace WhisperPrototype
         void OnPlayerStopSinging()
         {
             if(recordingState != NoteRecordingState.Pending)
-            {
                 recordingState = NoteRecordingState.Pending;
-            }         
-            // Discard note on exit
-            foreach(var note in listNoteDisplayer)
+            
+            // Confirm the whispering
+            if(listNotes!=null && listNotes.Count>0)
             {
-                Destroy(note.gameObject);
+                if(decoder.DecodeWhisper(listNotes.ToArray()))
+                {
+                    // Discard note on exit
+                    foreach(var note in listNoteDisplayer)
+                    {
+                        note.PopNote();
+                    }
+                }
+                else
+                {
+                    // Discard note on exit
+                    foreach(var note in listNoteDisplayer)
+                    {
+                        note.PopNote();
+                    }
+                }
             }
             listNoteDisplayer.Clear();
+            listNotes.Clear();
         }
         #endregion
     }

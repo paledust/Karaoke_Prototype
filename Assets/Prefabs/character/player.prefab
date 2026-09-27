@@ -5419,6 +5419,7 @@ GameObject:
   - component: {fileID: 6651674100240091244}
   - component: {fileID: 1614070449297646518}
   - component: {fileID: 4114113893753156519}
+  - component: {fileID: 3962198327598006066}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -5499,6 +5500,8 @@ MonoBehaviour:
   analyzer: {fileID: 6651674100240091244}
   recordingSource: {fileID: 7870586669602458367}
   animator: {fileID: 7073336593823798500}
+  sfxWhisperData: {fileID: 11400000, guid: f746039ae8c774b4c9ff5efc971e8b1e, type: 2}
+  sfxWhisperEndData: {fileID: 11400000, guid: 7e8e325e85b936e49b248e29deedc3dc, type: 2}
 --- !u!114 &6651674100240091244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5539,17 +5542,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad01f9269f0036b4a8695408ee2224ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteRecorder
-  volumeGate: 0.02
-  volumeTolerance: 0.01
-  recordingTimeGate: 0.5
-  longNoteTimeGate: 1.5
+  volumeGate: 0.01
+  volumeTolerance: 0.005
+  recordingTimeGate: 0.3
+  longNoteTimeGate: 1.2
   recordingState: 0
   noteSlot: {fileID: 3531663686459120546}
   noteDistance: 0.6
   showingNotePrefab: {fileID: 7670061735039636982, guid: 189f90aee201346448baf0f144f1c609, type: 3}
   shortNoteSprite: {fileID: 21300000, guid: 201a84f6267a339488f58c100594e7ad, type: 3}
   longNoteSprite: {fileID: 21300000, guid: 2781d4b290d067d429cad86950861641, type: 3}
+  decoder: {fileID: 3962198327598006066}
   vfxNoteOnShow: {fileID: 3479631608873612194}
+  listNoteDisplayer: []
+  listNotes: 
+--- !u!114 &3962198327598006066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500050492512512407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059fb73539850e247a53b281a84970ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperDecoder
 --- !u!1001 &5237005838170402483
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,32 +13,15 @@ MonoBehaviour:
   m_Name: whisper_spectrum
   m_EditorClassIdentifier: Assembly-CSharp::VoicePrototype.VoiceSpectrumData_SO
   spectrumColor:
-    serializedVersion: 2
-    key0: {r: 0.5070722, g: 1, b: 0.33773577, a: 1}
-    key1: {r: 1, g: 0.3037337, b: 0.10196078, a: 1}
-    key2: {r: 0.7811607, g: 0.18823528, b: 1, a: 0}
-    key3: {r: 0.26981127, g: 0.6508734, b: 1, a: 0}
-    key4: {r: 1, g: 0.8203618, b: 0.49622637, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 13107
-    ctime1: 26214
-    ctime2: 39321
-    ctime3: 52428
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65496
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 1
-    m_ColorSpace: -1
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 2
+  - {r: 0.5070722, g: 1, b: 0.33773577, a: 1}
+  - {r: 0.5058824, g: 1, b: 0.3372549, a: 1}
+  - {r: 1, g: 0.3037337, b: 0.10196078, a: 1}
+  - {r: 1, g: 0.3019608, b: 0.101960786, a: 1}
+  - {r: 0.26981127, g: 0.6508734, b: 1, a: 1}
+  - {r: 0.9669149, g: 0.27058828, b: 1, a: 1}
+  - {r: 0.96862745, g: 0.27058825, b: 1, a: 1}
+  - {r: 1, g: 0.81960785, b: 0.49803922, a: 1}
+  - {r: 1, g: 0.81960785, b: 0.49803922, a: 1}
+  - {r: 0, g: 1, b: 0.8687682, a: 1}
+  - {r: 0, g: 1, b: 0.87058824, a: 1}
+  - {r: 0.4245242, g: 0.12549019, b: 1, a: 1.6931923e+22}

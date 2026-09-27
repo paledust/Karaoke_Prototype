@@ -11,12 +11,12 @@ namespace AudioAnalysis
         private static extern float PitchDetectorGetFreq(int index);
 
         public int m_noteIndex { get; private set; } = 0;
-        public int m_rowPitchIndex {get; private set;} = 0;
+        public int m_rawPitchIndex {get; private set;} = 0;
         public float m_volumeLevel { get; private set; } = 0;
         public float m_freq { get; private set; } = 0;
         public string m_note {get; private set; } = "unknown";
         private readonly static string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-
+        
         // Update is called once per frame
         void Update()
         {
@@ -25,7 +25,7 @@ namespace AudioAnalysis
             {
                 m_note = "unknown";
                 m_noteIndex = 0;
-                m_rowPitchIndex = 0;
+                m_rawPitchIndex = 0;
                 m_freq = 0;
                 m_volumeLevel = 0;
                 
@@ -50,7 +50,7 @@ namespace AudioAnalysis
                 float noteval = 57.0f + 12.0f * Mathf.Log10(m_freq / 440.0f) / Mathf.Log10(2.0f);
                 int f = Mathf.FloorToInt(noteval + 0.5f);
                 
-                m_rowPitchIndex = f;
+                m_rawPitchIndex = f;
                 m_noteIndex = f % 12;
                 int octave = Mathf.FloorToInt((noteval + 0.5f) / 12.0f);
                 m_note = noteNames[m_noteIndex] + " " + octave;
@@ -59,7 +59,7 @@ namespace AudioAnalysis
             {
                 m_note = "unknown";
                 m_noteIndex = 0;
-                m_rowPitchIndex = 0;
+                m_rawPitchIndex = 0;
                 m_freq = 0;
             }
         }

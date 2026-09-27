@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using AudioAnalysis;
+using SimpleAudioSystem;
 
 public class PlayerInputControl : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class PlayerInputControl : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
+
+    [Header("Audio")]
+    [SerializeField] private AudioData_SO sfxWhisperData;
+    [SerializeField] private AudioData_SO sfxWhisperEndData;
 
     private bool isRecording;
     private string device;
@@ -57,6 +62,7 @@ public class PlayerInputControl : MonoBehaviour
         recordingSource.Play();
 
         PlayerSingingEvent.Call_OnPlayerStartToSing(analyzer);
+        AudioManager.Instance.PlaySFX(sfxWhisperData.name, 0.5f);
     }
     void StopRecording(InputAction.CallbackContext context)
     {
@@ -68,5 +74,6 @@ public class PlayerInputControl : MonoBehaviour
         Microphone.End(device);
 
         PlayerSingingEvent.Call_OnPlayerStopSinging();
+        AudioManager.Instance.PlaySFX(sfxWhisperEndData.name, 0.5f);
     }
 }
