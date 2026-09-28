@@ -54,6 +54,7 @@ namespace WhisperPrototype
         }
         public void PopNote()
         {
+            transform.DOKill();
             var seq = DOTween.Sequence();
             seq.Join(transform.DOScale(originalScale * 2, 0.4f).SetEase(Ease.InQuad))
                 .Join(noteRender.DOFade(0, 0.4f))
@@ -61,6 +62,7 @@ namespace WhisperPrototype
         }
         public void AbsorbNote()
         {
+            transform.DOKill();
             var seq = DOTween.Sequence();
             seq.Join(transform.DOScale(0, 0.2f).SetEase(Ease.InQuad))
                 .Join(noteRender.DOFade(0, 0.2f))

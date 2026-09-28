@@ -13,13 +13,13 @@ namespace WhisperPrototype
 
         void OnEnable()
         {
-            PlayerSingingEvent.E_OnPlayerStartToSing += OnPlayerStartSinging;
-            PlayerSingingEvent.E_OnPlayerStopSinging += OnPlayerStopSinging;
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering += OnPlayerStartSinging;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering += OnPlayerStopSinging;
         }
         void OnDisable()
         {
-            PlayerSingingEvent.E_OnPlayerStartToSing -= OnPlayerStartSinging;
-            PlayerSingingEvent.E_OnPlayerStopSinging -= OnPlayerStopSinging;
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering -= OnPlayerStartSinging;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering -= OnPlayerStopSinging;
         }
         void Start()
         {

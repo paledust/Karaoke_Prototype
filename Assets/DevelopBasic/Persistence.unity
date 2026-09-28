@@ -165,8 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperingManager
   whisperWordsCollection: {fileID: 11400000, guid: 781139a35c60e4247845c57670fb3826, type: 2}
   whisperSpectrum: {fileID: 11400000, guid: 0c7a28844bf09824d9a574431965ee65, type: 2}
-  octave: 3
   volumeRange: {x: 0, y: 0.3}
+  includeDeviation: 0
+  octave: 3
 --- !u!1 &400117799
 GameObject:
   m_ObjectHideFlags: 0

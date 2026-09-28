@@ -61,7 +61,7 @@ public class PlayerInputControl : MonoBehaviour
         recordingSource.loop = true;
         recordingSource.Play();
 
-        PlayerSingingEvent.Call_OnPlayerStartToSing(analyzer);
+        PlayerWhisperingEvent.Call_OnPlayerStartWhispering(analyzer);
         AudioManager.Instance.PlaySFX(sfxWhisperData.name, 0.5f);
     }
     void StopRecording(InputAction.CallbackContext context)
@@ -73,7 +73,7 @@ public class PlayerInputControl : MonoBehaviour
         recordingSource.Stop();
         Microphone.End(device);
 
-        PlayerSingingEvent.Call_OnPlayerStopSinging();
+        PlayerWhisperingEvent.Call_OnPlayerStopWhispering();
         AudioManager.Instance.PlaySFX(sfxWhisperEndData.name, 0.5f);
     }
 }

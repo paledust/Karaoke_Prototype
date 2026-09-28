@@ -50,13 +50,13 @@ namespace WhisperPrototype
         }
         void OnEnable()
         {
-            PlayerSingingEvent.E_OnPlayerStartToSing += OnPlayerStartSinging;
-            PlayerSingingEvent.E_OnPlayerStopSinging += OnPlayerStopSinging;
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering += OnPlayerStartSinging;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering += OnPlayerStopSinging;
         }
         void OnDisable()
         {
-            PlayerSingingEvent.E_OnPlayerStartToSing -= OnPlayerStartSinging;
-            PlayerSingingEvent.E_OnPlayerStopSinging -= OnPlayerStopSinging;
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering -= OnPlayerStartSinging;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering -= OnPlayerStopSinging;
         }
 
         // Update is called once per frame
@@ -94,6 +94,8 @@ namespace WhisperPrototype
                             recordingState = NoteRecordingState.Concluding;
                             stateTimer = 0;
 
+                            if(!currentBuildingDisplayer.IsConfirm)
+                                currentBuildingDisplayer.ConfirmNote();
                             listNotes.Add(WhisperingManager.GetValidatePitchIndex(audioAnalyzer.m_rawPitchIndex));
                             currentBuildingDisplayer.ReleaseNote();
                             currentBuildingDisplayer = null;
@@ -122,9 +124,7 @@ namespace WhisperPrototype
                         vfxNoteOnShow.Play();
                     }
                     if(!currentBuildingDisplayer.IsLong && stateTimer > longNoteTimeGate)
-                    {
                         currentBuildingDisplayer.SwapToLongNote(longNoteSprite);
-                    }
                     return;
                 case NoteRecordingState.Concluding:
                     recordingState = NoteRecordingState.Pending;
@@ -152,25 +152,28 @@ namespace WhisperPrototype
         {
             if(recordingState != NoteRecordingState.Pending)
                 recordingState = NoteRecordingState.Pending;
-            
+
+            // Discard Current Note
+            if(currentBuildingDisplayer != null)
+            {
+                currentBuildingDisplayer.PopNote();
+                currentBuildingDisplayer = null;
+            }
             // Confirm the whispering
+            var noteDisplayers = listNoteDisplayer.ToArray();
             if(listNotes!=null && listNotes.Count>0)
             {
                 if(decoder.DecodeWhisper(listNotes.ToArray()))
                 {
                     // Discard note on exit
-                    foreach(var note in listNoteDisplayer)
-                    {
-                        note.PopNote();
-                    }
+                    foreach(var note in noteDisplayers)
+                        note.AbsorbNote();
                 }
                 else
                 {
                     // Discard note on exit
-                    foreach(var note in listNoteDisplayer)
-                    {
+                    foreach(var note in noteDisplayers)
                         note.PopNote();
-                    }
                 }
             }
             listNoteDisplayer.Clear();
