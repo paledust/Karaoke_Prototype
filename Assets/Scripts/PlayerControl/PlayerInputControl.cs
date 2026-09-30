@@ -6,6 +6,11 @@ using SimpleAudioSystem;
 public class PlayerInputControl : MonoBehaviour
 {
     [SerializeField] private InputAction recordingKey;
+    [SerializeField] private InputAction movingKey;
+
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Transform characterRoot;
 
     [Header("Audio Source")]
     [SerializeField] private AudioAnalyzer analyzer;
@@ -20,6 +25,7 @@ public class PlayerInputControl : MonoBehaviour
     [SerializeField] private AudioData_SO sfxWhisperData;
     [SerializeField] private AudioData_SO sfxWhisperEndData;
 
+    private float speed;
     private bool isRecording;
     private string device;
     private AudioClip recordingClip;
@@ -38,14 +44,41 @@ public class PlayerInputControl : MonoBehaviour
     {
         recordingKey.performed += StartRecording;
         recordingKey.canceled += StopRecording;
+        movingKey.performed += Moving;
+        movingKey.canceled += Stopping;
         recordingKey.Enable();
+        movingKey.Enable();
     }
     void OnDisable()
     {
         recordingKey.performed -= StartRecording;
         recordingKey.canceled -= StopRecording;
+        movingKey.performed  -= Moving;
+        movingKey.canceled -= Stopping;
         recordingKey.Disable();
+        movingKey.Disable();
     }
+    void Update()
+    {
+        transform.position += speed * Vector3.right * Time.deltaTime * moveSpeed;
+    }
+
+    #region Movement Event
+    void Moving(InputAction.CallbackContext context)
+    {
+        speed = context.ReadValue<float>();
+        if(speed < 0)
+            characterRoot.localScale = new Vector3(-1, 1, 1);
+        else
+            characterRoot.localScale = Vector3.one;         
+    }
+    void Stopping(InputAction.CallbackContext context)
+    {
+        speed = 0;
+    }
+    #endregion
+
+    #region Whisper Event
     void StartRecording(InputAction.CallbackContext context)
     {
         if(isRecording)
@@ -76,4 +109,5 @@ public class PlayerInputControl : MonoBehaviour
         PlayerWhisperingEvent.Call_OnPlayerStopWhispering();
         AudioManager.Instance.PlaySFX(sfxWhisperEndData.name, 0.5f);
     }
+    #endregion
 }

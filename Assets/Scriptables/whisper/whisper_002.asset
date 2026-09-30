@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperWordData_SO
   key: confirmation
   icon: {fileID: 21300000, guid: 1c66767bb5e6d734e978bd7c67fa1a65, type: 3}
-  notes: 0200000005000000
+  notes: 0000000002000000

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: all_audio
   m_EditorClassIdentifier: 
   bgm_info_list: []
-  amb_info_list: []
+  amb_info_list:
+  - {fileID: 11400000, guid: 20feda7559238d24596ee1517372dd80, type: 2}
   sfx_info_list:
   - {fileID: 11400000, guid: f746039ae8c774b4c9ff5efc971e8b1e, type: 2}
   - {fileID: 11400000, guid: 7e8e325e85b936e49b248e29deedc3dc, type: 2}
+  - {fileID: 11400000, guid: 3615faa4ffc6ca84aaf6a1f49384933a, type: 2}
+  - {fileID: 11400000, guid: fac17bcb856602e428978a189be5bc41, type: 2}
+  - {fileID: 11400000, guid: 63a64ec61a2fc4046af79210c2345489, type: 2}

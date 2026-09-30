@@ -52,7 +52,7 @@ namespace WhisperPrototype
             }
             return noteIndex;
         }
-        public static float GetNormalizedVolumeScale(float volume) => Mathf.InverseLerp(Instance.volumeRange.x, Instance.volumeRange.y, volume);
+        public static float GetNormalizedVolumeScale(float volume) => (volume - Instance.volumeRange.x)/(Instance.volumeRange.y-Instance.volumeRange.x);
         public static WhisperWordData_SO GetWhisper(int[] note)=>Instance.whisperWordsCollection.GetWhisperByNote(note);
     }
 }
