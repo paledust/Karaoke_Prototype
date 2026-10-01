@@ -1,3 +1,4 @@
+using SimpleAudioSystem;
 using UnityEngine;
 
 namespace WhisperPrototype
@@ -8,6 +9,8 @@ namespace WhisperPrototype
         [SerializeField] private string key;
         [SerializeField] private Sprite icon;
         [SerializeField] private int[] notes;
+        [SerializeField] private AudioDataClip_SO whisperClip;
+        public string GetClipKey()=>whisperClip.name;
         public string GetKey()=>key;
         public Sprite GetIcon()=>icon;
         public int[] GetNotes()=>notes;

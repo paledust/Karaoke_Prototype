@@ -5,7 +5,7 @@ namespace WhisperPrototype.Statue
 {
     public static class StatueEvent
     {
-        public static event Action<Statue> E_OnStatueSense;
-        public static void Call_OnStatueSense(Statue statue)=>E_OnStatueSense?.Invoke(statue);
+        public static event Action<StatueHarmonyWithPlayer> E_OnStatueSense;
+        public static void Call_OnStatueSense(StatueHarmonyWithPlayer statue)=>E_OnStatueSense?.Invoke(statue);
     }
 }

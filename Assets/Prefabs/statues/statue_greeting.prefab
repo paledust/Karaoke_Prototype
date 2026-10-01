@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1143042610678198804, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143042610678198804, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2474636026785311002, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.015
@@ -89,8 +97,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f1d2af03af83fad4aa8886a59f13d008, type: 3}
     - target: {fileID: 8761127440192745720, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      propertyPath: playingFreq
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761127440192745720, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: volumeRange.x
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8761127440192745720, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: volumeRange.y

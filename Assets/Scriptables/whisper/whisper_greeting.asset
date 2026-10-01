@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3638b0c1e7d4447b3ae45fb158be49, type: 3}
-  m_Name: whisper_002
+  m_Name: whisper_greeting
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperWordData_SO
-  key: confirmation
-  icon: {fileID: 21300000, guid: 1c66767bb5e6d734e978bd7c67fa1a65, type: 3}
-  notes: 0000000002000000
+  key: greeting
+  icon: {fileID: 21300000, guid: 1f2486490dc5e2444a0fa0eba04d2241, type: 3}
+  notes: 0200000004000000
+  whisperClip: {fileID: 11400000, guid: fac17bcb856602e428978a189be5bc41, type: 2}
