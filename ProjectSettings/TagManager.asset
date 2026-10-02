@@ -45,5 +45,8 @@ TagManager:
   - name: Book
     uniqueID: 1077131597
     locked: 0
+  - name: HUD
+    uniqueID: 2558601841
+    locked: 0
   m_RenderingLayers:
   - Default

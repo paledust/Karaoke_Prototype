@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b687709caefffa469c1dd663b7aa106, type: 3}
   m_Name: whisper_effect_silence
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperEffectSilent
-  duration: 5
+  duration: 4
   whisper_zone_prefab: {fileID: 6420995725734092366, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}

@@ -7,7 +7,7 @@ namespace WhisperPrototype.Statue
     [RequireComponent(typeof(Statue))]
     public class StatueComponent_RepeatSinging : MonoBehaviour
     {
-        [SerializeField] private float playingFreq;
+        [SerializeField] private float playerCycle;
 
         private Statue statue;
         private CoroutineExcuter whisperPlayer;
@@ -26,7 +26,7 @@ namespace WhisperPrototype.Statue
             while(true)
             {
                 statue.PlayWhisper();
-                yield return new WaitForSeconds(1f/playingFreq);
+                yield return new WaitForSeconds(playerCycle);
             }
         }
     }

@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d36f80a4cb5e945a6d3112dc3d20d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.Statue.StatueComponent_RepeatSinging
-  playingFreq: 0.15
+  playerCycle: 7
 --- !u!114 &4382491412267650809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +150,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperHandler
   castRoot: {fileID: 3580780626007516589}
   castRadius: 1
+  unlockAllWhisper: 1

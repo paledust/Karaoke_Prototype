@@ -95,7 +95,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: '#book_root/book_closed'
+    path: '#book_root/#book_closed'
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -134,7 +134,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: '#book_root/book_open'
+    path: '#book_root/#book_open'
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -347,7 +347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: '#book_root/book_closed'
+    path: '#book_root/#book_closed'
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -386,7 +386,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: '#book_root/book_open'
+    path: '#book_root/#book_open'
     classID: 1
     script: {fileID: 0}
     flags: 0

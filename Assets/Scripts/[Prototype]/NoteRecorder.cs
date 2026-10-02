@@ -26,10 +26,7 @@ namespace WhisperPrototype
         // [SerializeField] private Sprite longNoteSprite;
 
         [Header("Whisper")]
-        [SerializeField] private WhisperDecoder decoder;
-
-        [Header("VFX")]
-        [SerializeField] private ParticleSystem vfxNoteOnShow;
+        [SerializeField] private WhisperHandler whisperHandler;
 
         private AudioAnalyzer audioAnalyzer;
         private List<NoteDisplayer> listNoteDisplayer;
@@ -163,7 +160,7 @@ namespace WhisperPrototype
             var noteDisplayers = listNoteDisplayer.ToArray();
             if(listNotes!=null && listNotes.Count>0)
             {
-                if(decoder.DecodeWhisper(listNotes.ToArray()))
+                if(whisperHandler.DecodeWhisperFromNote(listNotes.ToArray()))
                 {
                     // Discard note on exit
                     foreach(var note in noteDisplayers)
