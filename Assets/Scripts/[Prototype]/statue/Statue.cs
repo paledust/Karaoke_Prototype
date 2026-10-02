@@ -8,16 +8,20 @@ namespace WhisperPrototype.Statue
     public class Statue : MonoBehaviour
     {
         [SerializeField] private AudioSource statueAudio;
+        [SerializeField] private WhisperHandler whisperHandler;
         [SerializeField] private WhisperWordData_SO whisper;
         [SerializeField] private ParticleSystem vfxWhispering;
-
-        public event Action OnPlayerEnter;
-        public event Action OnPlayerExit;
+        private GameObject player;
 
         public void PlayWhisper()
         {
             vfxWhispering.Play();
-            AudioManager.Instance.PlaySFX(statueAudio, whisper.GetClipKey(), 1);            
+            AudioManager.Instance.PlaySFX(statueAudio, whisper.GetClipKey(), 1);
+            whisperHandler.TryCastWhisper(whisper);
+            if(player!=null)
+            {
+                player.GetComponent<WhisperHandler>().HearingWhisper(whisper);
+            }
         }
         public void AdjustVolume(float targetVolume, float duration)
         {
@@ -33,14 +37,14 @@ namespace WhisperPrototype.Statue
         {
             if(other.CompareTag("Player"))
             {
-                OnPlayerEnter?.Invoke();
+                player = other.gameObject;
             }
         }
         void OnTriggerExit(Collider other)
         {
             if(other.CompareTag("Player"))
             {
-                OnPlayerExit?.Invoke();
+                player = null;
             }
         }
     }

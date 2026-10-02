@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WhisperPrototype
@@ -10,6 +11,13 @@ namespace WhisperPrototype
         [SerializeField] private bool includeDeviation;
         [SerializeField] private int octave;
 
+        private HashSet<string> learnedWhisper;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            learnedWhisper = new HashSet<string>();
+        }
         public static Color GetSpectrumColor(int noteIndex)
         {
             int spectrumIndex = GetValidatePitchIndex(noteIndex);
@@ -54,5 +62,6 @@ namespace WhisperPrototype
         }
         public static float GetNormalizedVolumeScale(float volume) => (volume - Instance.volumeRange.x)/(Instance.volumeRange.y-Instance.volumeRange.x);
         public static WhisperWordData_SO GetWhisper(int[] note)=>Instance.whisperWordsCollection.GetWhisperByNote(note);
+        public static bool HasLearnedWhisper(string whisperKey)=>Instance.learnedWhisper.Contains(whisperKey);
     }
 }

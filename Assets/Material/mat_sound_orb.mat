@@ -8,10 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_sound_orb
-  m_Shader: {fileID: 4800000, guid: 3eff85b69d02c0c469b1736bbcdc6dd9, type: 3}
+  m_Shader: {fileID: 4800000, guid: cc3217ddc36aef74ea22361748af7a5b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _INVERSELIFETIMESOURCE_VALUE
+  - _NOISESPEEDCONTROL_STATIC
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -27,12 +29,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FadeNoiseTex:
+        m_Texture: {fileID: 2800000, guid: d87b3c91ca4427d43b327de44ec644b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: bb0317c311208f748b6e5956565eb30c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -53,10 +63,39 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _DirectionalFade: 0
+    - _DirectionalFadeSmooth: 1
+    - _EmissionScale: 5
+    - _EmissionShimering: 0.2
     - _EnableExternalAlpha: 0
+    - _FadeLength: 0.2
+    - _FadePatternScale: 1
+    - _FadeRadius: 0.3
+    - _FadeSmooth: 1.4
+    - _FadeStrength: 0.05
+    - _InnerRingRadius: 0.48
+    - _InnerRingWidth: 0.01
+    - _InverseLifeTimeSource: 1
+    - _LifeTime: 0
+    - _Max: 1
+    - _Min: 0.9
+    - _NoiseMax: 1
+    - _NoiseMin: -1.25
+    - _NoiseSpeedControl: 0
+    - _NoiseStrength: 1
+    - _NoiseTiling: 0.1
+    - _OutterRingRadius: 0.53
+    - _OutterRingWidth: 0.035
+    - _ShimeringFreq: 3.5
+    - _UseVoronoid: 0
+    - _VoronoidScale: 1
+    - _VoronoidStrength: 0
+    - _WhisperOnly: 0
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ExternalNoiseOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseSpeed: {r: 0.05, g: -0.2, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

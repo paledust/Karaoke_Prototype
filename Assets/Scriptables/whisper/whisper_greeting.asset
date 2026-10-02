@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1f2486490dc5e2444a0fa0eba04d2241, type: 3}
   notes: 0200000004000000
   whisperClip: {fileID: 11400000, guid: fac17bcb856602e428978a189be5bc41, type: 2}
+  whisperEffectData: {fileID: 11400000, guid: 00595ffbf07bc8c40bbc6cdd4f47074e, type: 2}

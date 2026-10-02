@@ -17,30 +17,16 @@ namespace WhisperPrototype.Statue
             statue = GetComponent<Statue>();
             whisperPlayer = new CoroutineExcuter(this);
         }
-        void OnEnable()
-        {
-            statue.OnPlayerEnter += OnPlayerEnter;
-            statue.OnPlayerExit += OnPlayerExit;
-        }
-        void OnDisable()
-        {
-            statue.OnPlayerEnter -= OnPlayerEnter;
-            statue.OnPlayerExit -= OnPlayerExit;
-        }
-        void OnPlayerEnter()
+        void Start()
         {
             whisperPlayer.Excute(coroutineRepeatSFX());
-        }
-        void OnPlayerExit()
-        {
-            whisperPlayer.Abort();
         }
         IEnumerator coroutineRepeatSFX()
         {
             while(true)
             {
                 statue.PlayWhisper();
-                yield return new WaitForSeconds(1/playingFreq);
+                yield return new WaitForSeconds(1f/playingFreq);
             }
         }
     }

@@ -1,0 +1,25 @@
+using UnityEngine;
+
+namespace WhisperPrototype
+{
+    public class WhisperHandler : MonoBehaviour
+    {
+        [SerializeField] private Transform castRoot;
+        [SerializeField] private float castRadius;
+        public bool TryCastWhisper(WhisperWordData_SO whisper)
+        {
+            if(WhisperingManager.HasLearnedWhisper(whisper.GetKey()))
+            {
+                var effect = whisper.GetWhisperEffect();
+                effect.InitializeWhisper(this, castRoot.position, castRadius);
+
+                return true;
+            }
+            return false;
+        }
+        public void HearingWhisper(WhisperWordData_SO whisper)
+        {
+            
+        }
+    }
+}

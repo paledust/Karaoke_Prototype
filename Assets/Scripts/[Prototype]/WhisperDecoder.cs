@@ -1,3 +1,4 @@
+using System;
 using AudioAnalysis;
 using DG.Tweening;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace WhisperPrototype
     public class WhisperDecoder : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer showingSprite;
+        [SerializeField] private WhisperHandler whisperHandler;
 
         void Awake()
         {
@@ -34,9 +36,10 @@ namespace WhisperPrototype
                 showingSprite.color = new Color(1,1,1,0);
                 showingSprite.enabled = true;
                 showingSprite.DOKill();
-                showingSprite.DOFade(1, 1f).SetEase(Ease.OutQuad);
+                showingSprite.DOFade(1, 1f).SetEase(Ease.OutQuad)
+                             .OnComplete(()=>showingSprite.DOFade(0, 2f));
+                whisperHandler.TryCastWhisper(whisper);
             }
-
             return whisper != null;
         }
         public void FadeOutWhisper()

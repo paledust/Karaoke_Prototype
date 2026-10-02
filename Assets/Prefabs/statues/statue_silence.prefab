@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1934238749612460840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3580780626007516589}
+  m_Layer: 0
+  m_Name: whisper_root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3580780626007516589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934238749612460840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.941, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1103936988694162967}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2495412585771729260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,6 +87,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5588227746944096135, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      propertyPath: whisperHandler
+      value: 
+      objectReference: {fileID: 4382491412267650809}
     - target: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: m_Name
       value: statue_silence
@@ -69,11 +104,14 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3310291210206261115, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4622584841900450348}
+      addedObject: {fileID: 3580780626007516589}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3349838241872534451}
+    - targetCorrespondingSourceObject: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4382491412267650809}
   m_SourcePrefab: {fileID: 100100000, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
 --- !u!4 &1103936988694162967 stripped
 Transform:
@@ -97,74 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d36f80a4cb5e945a6d3112dc3d20d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.Statue.StatueComponent_RepeatSinging
-  playingFreq: 0.1
---- !u!1001 &3012022042998076105
-PrefabInstance:
+  playingFreq: 0.15
+--- !u!114 &4382491412267650809
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1103936988694162967}
-    m_Modifications:
-    - target: {fileID: 6420995725734092366, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_Name
-      value: zone_silence
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966895800122327275, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_Color.b
-      value: 0.84339625
-      objectReference: {fileID: 0}
-    - target: {fileID: 8966895800122327275, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-      propertyPath: m_Color.g
-      value: 0.92491347
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
---- !u!4 &4622584841900450348 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7632020798636495077, guid: 79168eceea595c6459b4edd401a38cf3, type: 3}
-  m_PrefabInstance: {fileID: 3012022042998076105}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504861032547643079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145a15514d27262408476e130b04467f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperHandler
+  castRoot: {fileID: 3580780626007516589}
+  castRadius: 1
