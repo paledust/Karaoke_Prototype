@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AudioAnalysis;
 using UnityEngine;
@@ -18,42 +19,23 @@ namespace WhisperPrototype
         [SerializeField] private float longNoteTimeGate;
         [SerializeField, ShowOnly] private NoteRecordingState recordingState;
 
-        // [Header("Note Display")]
-        // [SerializeField] private Transform noteSlot;
-        // [SerializeField] private float noteDistance;
-        // [SerializeField] private GameObject showingNotePrefab;
-        // [SerializeField] private Sprite shortNoteSprite;
-        // [SerializeField] private Sprite longNoteSprite;
+        [Header("Recording Source")]
+        [SerializeField] private AudioSource recordingSource;
 
         [Header("Whisper")]
         [SerializeField] private WhisperHandler whisperHandler;
-
-        private AudioAnalyzer audioAnalyzer;
-        private List<NoteDisplayer> listNoteDisplayer;
-        private List<int> listNotes;
-        // private NoteDisplayer currentBuildingDisplayer;
+        
+        private string device;
         private float stateTimer;
+        private List<int> listNotes;
+        private AudioAnalyzer audioAnalyzer;
+        
+        public event Action<WhisperWordData_SO> OnNoteMatchingWhisper;
         
         void Awake()
         {
-            listNoteDisplayer = new List<NoteDisplayer>();
             listNotes = new List<int>();
             recordingState = NoteRecordingState.Pending;
-            // // Clean Up all placeholder note
-            // foreach(Transform placeHolder in noteSlot)
-            // {
-            //     Destroy(placeHolder.gameObject);
-            // }
-        }
-        void OnEnable()
-        {
-            PlayerWhisperingEvent.E_OnPlayerStartWhispering += OnPlayerStartSinging;
-            PlayerWhisperingEvent.E_OnPlayerStopWhispering += OnPlayerStopSinging;
-        }
-        void OnDisable()
-        {
-            PlayerWhisperingEvent.E_OnPlayerStartWhispering -= OnPlayerStartSinging;
-            PlayerWhisperingEvent.E_OnPlayerStopWhispering -= OnPlayerStopSinging;
         }
 
         // Update is called once per frame
@@ -70,13 +52,6 @@ namespace WhisperPrototype
                         recordingState = NoteRecordingState.Recording;
                         stateTimer = 0;
 
-                        // // Recording Satate Enter
-                        // var note = Instantiate(showingNotePrefab, noteSlot);
-                        // note.name = $"displayer_{listNoteDisplayer.Count}";
-                        // currentBuildingDisplayer = note.GetComponent<NoteDisplayer>();
-                        // listNoteDisplayer.Add(currentBuildingDisplayer);
-                        // RepositionAllNote();
-
                         return;
                     }
                     return;
@@ -91,11 +66,7 @@ namespace WhisperPrototype
                             recordingState = NoteRecordingState.Concluding;
                             stateTimer = 0;
 
-                            // if(!currentBuildingDisplayer.IsConfirm)
-                                // currentBuildingDisplayer.ConfirmNote();
                             listNotes.Add(WhisperingManager.GetValidatePitchIndex(audioAnalyzer.m_rawPitchIndex));
-                            // currentBuildingDisplayer.ReleaseNote();
-                            // currentBuildingDisplayer = null;
                             return;
                         }
                         else
@@ -104,24 +75,10 @@ namespace WhisperPrototype
                             recordingState = NoteRecordingState.Pending;
                             stateTimer = 0;
 
-                            // Discard note on exit
-                            // listNoteDisplayer.Remove(currentBuildingDisplayer);
-                            // RepositionAllNote();
-                            // Destroy(currentBuildingDisplayer.gameObject);
-                            // currentBuildingDisplayer = null;
-
                             return;
                         }
                     }
-                    // if(!currentBuildingDisplayer.IsConfirm && stateTimer > recordingTimeGate)
-                    // {
-                    //     currentBuildingDisplayer.ConfirmNote();
-                    //     // Play VFX
-                    //     vfxNoteOnShow.transform.position = currentBuildingDisplayer.transform.position;
-                    //     vfxNoteOnShow.Play();
-                    // }
-                    // if(!currentBuildingDisplayer.IsLong && stateTimer > longNoteTimeGate)
-                    //     currentBuildingDisplayer.SwapToLongNote(longNoteSprite);
+
                     return;
                 case NoteRecordingState.Concluding:
                     recordingState = NoteRecordingState.Pending;
@@ -130,50 +87,41 @@ namespace WhisperPrototype
                     return;
             }
         }
-        // void RepositionAllNote()
-        // {
-        //     for(int i=0; i<listNoteDisplayer.Count; i++)
-        //     {
-        //         listNoteDisplayer[i].transform.localPosition = Vector3.right * (noteDistance * (i - (listNoteDisplayer.Count - 1) * 0.5f));
-        //     }
-        // }
-
-        #region Singing Event Handling
-        void OnPlayerStartSinging(AudioAnalyzer audioAnalyzer)
+        
+        #region Recording
+        public void BeginRecording(AudioAnalyzer audioAnalyzer)
         {
+            recordingSource.Stop();
+            var recordingClip = RecordManager.Instance.BeginRecording(5);
+            while (!(Microphone.GetPosition(device) > 0.02f)) {}
+            recordingSource.clip = recordingClip;
+            recordingSource.loop = true;
+            recordingSource.Play();
+
+            // Reset State
             this.audioAnalyzer = audioAnalyzer;
             if(recordingState != NoteRecordingState.Pending)
                 recordingState = NoteRecordingState.Pending;
         }
-        void OnPlayerStopSinging()
+        public void EndRecording()
         {
+            recordingSource.Stop();
+            RecordManager.Instance.StopRecording();
+
+            // Reset State and Clean up
             if(recordingState != NoteRecordingState.Pending)
                 recordingState = NoteRecordingState.Pending;
 
-            // // Discard Current Note
-            // if(currentBuildingDisplayer != null)
-            // {
-            //     currentBuildingDisplayer.PopNote();
-            //     currentBuildingDisplayer = null;
-            // }
-            // Confirm the whispering
-            var noteDisplayers = listNoteDisplayer.ToArray();
             if(listNotes!=null && listNotes.Count>0)
             {
-                if(whisperHandler.DecodeWhisperFromNote(listNotes.ToArray()))
+                var whisper = whisperHandler.DecodeWhisperFromNote(listNotes.ToArray());
+                if(whisper != null)
                 {
-                    // Discard note on exit
-                    foreach(var note in noteDisplayers)
-                        note.AbsorbNote();
-                }
-                else
-                {
-                    // Discard note on exit
-                    foreach(var note in noteDisplayers)
-                        note.PopNote();
+                    whisperHandler.TryCastWhisper(whisper);
+                    OnNoteMatchingWhisper?.Invoke(whisper);
+
                 }
             }
-            listNoteDisplayer.Clear();
             listNotes.Clear();
         }
         #endregion

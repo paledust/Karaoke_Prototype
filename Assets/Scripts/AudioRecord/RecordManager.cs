@@ -11,9 +11,8 @@ public class RecordManager : Singleton<RecordManager>
     
     private string device = "";
     private int deviceIndex = 0;
-    private AudioClip currentClip;
-
-    public AudioClip m_currentClip => currentClip;
+    private AudioClip pendingClip;
+    public AudioClip m_pendingClip => pendingClip;
     
     void Start()
     {
@@ -41,9 +40,9 @@ public class RecordManager : Singleton<RecordManager>
         if(!isRecording)
         {
             isRecording = true;
-            currentClip = Microphone.Start(device, true, length, AudioSettings.outputSampleRate);
+            pendingClip = Microphone.Start(device, true, length, AudioSettings.outputSampleRate);
         }
-        return currentClip;
+        return pendingClip;
     }
     public void StopRecording()
     {
@@ -52,5 +51,10 @@ public class RecordManager : Singleton<RecordManager>
             isRecording = false;
             Microphone.End(device);
         }
+    }
+    public void SaveCurrentClip(string name)
+    {
+        SaveWav.Save(name, pendingClip);
+        pendingClip = null;
     }
 }

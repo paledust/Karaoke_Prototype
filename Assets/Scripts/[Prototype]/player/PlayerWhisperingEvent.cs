@@ -10,5 +10,9 @@ namespace WhisperPrototype
         public static void Call_OnPlayerStopWhispering()=>E_OnPlayerStopWhispering?.Invoke();
         public static event Action<WhisperWordData_SO> E_OnPlayerHearingNewWhisper;
         public static void Call_OnPlayerHearingNewWhisper(WhisperWordData_SO whisper) => E_OnPlayerHearingNewWhisper?.Invoke(whisper);
+        public static event Action<WhisperWordData_SO> E_OnPlayerEndLeanredNewWhisper;
+        public static void Call_OnPlayerEndLeanredNewWhisper(WhisperWordData_SO whisper) => E_OnPlayerEndLeanredNewWhisper?.Invoke(whisper);
+        public static event Action<int> E_OnPlayerUseWhisperAtIndex;
+        public static void Call_OnPlayerUseWhisperAtIndex(int index) => E_OnPlayerUseWhisperAtIndex?.Invoke(index);
     }
 }

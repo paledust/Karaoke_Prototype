@@ -8,19 +8,14 @@ namespace WhisperPrototype
         [SerializeField] private float castRadius;
         [SerializeField] private bool unlockAllWhisper = false;
 
-        public bool DecodeWhisperFromNote(int[] notes)
+        public WhisperWordData_SO DecodeWhisperFromNote(int[] notes)
         {
             var whisper = WhisperingManager.GetWhisper(notes);
-
-            if(whisper != null)
-            {
-                TryCastWhisper(whisper);
-            }
-            return whisper != null;
+            return whisper;
         }
         public bool TryCastWhisper(WhisperWordData_SO whisper)
         {
-            if(unlockAllWhisper || WhisperingManager.HasLearnedWhisper(whisper.GetKey()))
+            if(unlockAllWhisper || WhisperingManager.HasLearnedWhisper(whisper))
             {
                 var effect = whisper.GetWhisperEffect();
                 effect.InitializeWhisper(this, castRoot.position, castRadius);
@@ -31,7 +26,7 @@ namespace WhisperPrototype
         }
         public void HearingWhisper(WhisperWordData_SO whisper)
         {
-            if(!WhisperingManager.HasLearnedWhisper(whisper.GetKey()))
+            if(!WhisperingManager.HasLearnedWhisper(whisper))
             {
                 PlayerWhisperingEvent.Call_OnPlayerHearingNewWhisper(whisper);
             }

@@ -11,12 +11,12 @@ namespace WhisperPrototype
         [SerializeField] private bool includeDeviation;
         [SerializeField] private int octave;
 
-        private HashSet<string> learnedWhisper;
+        private List<WhisperWordData_SO> learnedWhisperData;
 
         protected override void Awake()
         {
             base.Awake();
-            learnedWhisper = new HashSet<string>();
+            learnedWhisperData = new List<WhisperWordData_SO>();
         }
         public static Color GetSpectrumColor(int noteIndex)
         {
@@ -62,6 +62,15 @@ namespace WhisperPrototype
         }
         public static float GetNormalizedVolumeScale(float volume) => (volume - Instance.volumeRange.x)/(Instance.volumeRange.y-Instance.volumeRange.x);
         public static WhisperWordData_SO GetWhisper(int[] note)=>Instance.whisperWordsCollection.GetWhisperByNote(note);
-        public static bool HasLearnedWhisper(string whisperKey)=>Instance.learnedWhisper.Contains(whisperKey);
+        public static WhisperWordData_SO GetLearnedWhisper(int index) => Instance.learnedWhisperData[index];
+        public static bool HasLearnedWhisper(WhisperWordData_SO whisperData)=>Instance.learnedWhisperData.Contains(whisperData);
+        public static bool IsWhisperValidAt(int index) => Instance.learnedWhisperData.Count>index && Instance.learnedWhisperData[index]!=null;
+        public static void UnlockWhisper(WhisperWordData_SO whisperData)
+        {
+            Instance.learnedWhisperData.Add(whisperData);
+            var clip = RecordManager.Instance.m_pendingClip;
+            RecordManager.Instance.SaveCurrentClip($"sfx_{whisperData.GetKey()}_player");
+            whisperData.AssignClipToPlayerAudioData(clip);
+        }
     }
 }

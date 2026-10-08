@@ -24,6 +24,7 @@ namespace WhisperPrototype.UI
             btnBookClose.onClick.AddListener(BtnCloseBook);
 
             PlayerWhisperingEvent.E_OnPlayerHearingNewWhisper += HandleNewWhisper;
+            PlayerWhisperingEvent.E_OnPlayerEndLeanredNewWhisper += HandleLearningWhisper;
         }
         void OnDestroy()
         {
@@ -31,11 +32,20 @@ namespace WhisperPrototype.UI
             btnBookClose.onClick.RemoveListener(BtnCloseBook);
 
             PlayerWhisperingEvent.E_OnPlayerHearingNewWhisper -= HandleNewWhisper;
+            PlayerWhisperingEvent.E_OnPlayerEndLeanredNewWhisper -= HandleLearningWhisper;
         }
         void HandleNewWhisper(WhisperWordData_SO whisper)
         {
             hint.gameObject.SetActive(true);
             pendingWhisper = whisper;
+        }
+        void HandleLearningWhisper(WhisperWordData_SO whisper)
+        {
+            hint.gameObject.SetActive(false);
+            pendingWhisper = null;
+            btnBookClose.gameObject.SetActive(false);
+            btnBookOpen.gameObject.SetActive(true);
+            canvasGroup.interactable = true;
         }
         async void BtnOpenBook()
         {

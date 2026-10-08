@@ -1,7 +1,9 @@
-using System.Runtime.ExceptionServices;
+using System.Collections;
+using System.Threading.Tasks;
+using AudioAnalysis;
+using DG.Tweening;
 using SimpleAudioSystem;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace WhisperPrototype.Book
 {
@@ -10,80 +12,81 @@ namespace WhisperPrototype.Book
         [SerializeField] private ParticleSystem vfxWhispering;
         [SerializeField] private SpriteRenderer whisperRenderer;
         [SerializeField] private PerRenderWhisper perRenderWhisper;
-
-        [Header("Input")]
-        [SerializeField] private InputAction recordingKey;
+        [SerializeField] private GameObject hintTxt;
 
         [Header("Maie Mimic")]
         [SerializeField] private Animator maieAnime;
 
-        [Header("Recording")]
-        [SerializeField] private AudioSource recordingSource;
+        [Header("Unlock Whisper Audio")]
+        [SerializeField] private AudioData_SO sfxWhisperAppear;
 
-        private AudioClip recordingClip;
-        private string device;
-        private bool isInputRegistered = false;
-        private bool isRecording = false;
+        private NoteRecorder playerNoteRecorder;
+        private WhisperWordData_SO checkingWhisper;
 
         private const string ANIM_SINGING_BOOL = "IsSinging";
 
         void Start()
         {
-            device = Microphone.devices[0];
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering += StartWhisperingHandler;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering += StopWhisperingHandler;
+         }
+        void OnDestroy()
+        {
+            PlayerWhisperingEvent.E_OnPlayerStartWhispering -= StartWhisperingHandler;
+            PlayerWhisperingEvent.E_OnPlayerStopWhispering -= StopWhisperingHandler;
         }
         public void CleanUp()
         {
             vfxWhispering.gameObject.SetActive(false);
             whisperRenderer.gameObject.SetActive(false);
-            isRecording = false;
-
-            if(isInputRegistered)
+            hintTxt.SetActive(false);
+            if(playerNoteRecorder!=null)
             {
-                isInputRegistered = false;
-                recordingKey.performed -= StartRecording;
-                recordingKey.canceled -= StopRecording;
-                recordingKey.Disable();
+                playerNoteRecorder.OnNoteMatchingWhisper -= NoteMatchingHandler;
+                playerNoteRecorder = null;
             }
         }
         public void PrepareForNewWhisper(WhisperWordData_SO newWhisper)
         {
             vfxWhispering.gameObject.SetActive(true);
             whisperRenderer.gameObject.SetActive(true);
+            hintTxt.SetActive(true);
+            checkingWhisper = newWhisper;
             whisperRenderer.sprite = newWhisper.GetIcon();
             perRenderWhisper.dissolveStart = 0;
+        }
 
-            if(!isInputRegistered)
+        void StartWhisperingHandler(AudioAnalyzer playerAnalyzer)
+        {
+            playerNoteRecorder = playerAnalyzer.GetComponent<NoteRecorder>();
+            playerNoteRecorder.OnNoteMatchingWhisper += NoteMatchingHandler;
+            maieAnime.SetBool(ANIM_SINGING_BOOL, true);
+        }
+        void StopWhisperingHandler()
+        {
+            playerNoteRecorder.OnNoteMatchingWhisper -= NoteMatchingHandler;
+            playerNoteRecorder = null;
+            maieAnime.SetBool(ANIM_SINGING_BOOL, false);
+        }
+        void NoteMatchingHandler(WhisperWordData_SO whisper)
+        {
+            if(whisper != null && whisper == checkingWhisper)
             {
-                isInputRegistered = true;
-                recordingKey.performed += StartRecording;
-                recordingKey.canceled += StopRecording;
-                recordingKey.Enable();
+                perRenderWhisper.dissolveStart = 0;
+                AudioManager.Instance.PlaySFX(sfxWhisperAppear.name, 1);
+                DOTween.To(()=>perRenderWhisper.dissolveStart, x=>perRenderWhisper.dissolveStart = x, 1, 3f)
+                        .SetEase(Ease.OutQuad)
+                        .OnComplete(()=>StartCoroutine(coroutineFinishLearning()));
             }
         }
-        void StartRecording(InputAction.CallbackContext context)
+        IEnumerator coroutineFinishLearning()
         {
-            if(isRecording)
-                return;
-            isRecording = true;
-            //Change Animation
-            maieAnime.SetBool(ANIM_SINGING_BOOL, true);
-
-            //Record with Audio Source
-            recordingSource.Stop();
-            recordingClip = Microphone.Start(device, true, 1, AudioSettings.outputSampleRate);
-            while (!(Microphone.GetPosition(device) > 0.02f)) {}
-            recordingSource.clip = recordingClip;
-            recordingSource.loop = true;
-            recordingSource.Play();
-        }
-        void StopRecording(InputAction.CallbackContext context)
-        {
-            if(!isRecording)
-                return;
-            isRecording = false;
-            maieAnime.SetBool(ANIM_SINGING_BOOL, false);
-            recordingSource.Stop();
-            Microphone.End(device);
+            WhisperingManager.UnlockWhisper(checkingWhisper);
+            yield return new WaitForSeconds(0.5f);
+            yield return GetComponent<BookOfWhisper>().CloseBook();
+            yield return new WaitForSeconds(0.5f);
+            PlayerWhisperingEvent.Call_OnPlayerEndLeanredNewWhisper(checkingWhisper);
+            checkingWhisper = null;
         }
     }
 }

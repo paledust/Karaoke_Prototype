@@ -15,13 +15,13 @@ namespace WhisperPrototype
         [SerializeField] private float moveSpeed;
         [SerializeField] private Transform characterRoot;
 
-        [Header("Audio Source")]
+        [Header("Audio Analyze")]
         [SerializeField] private AudioAnalyzer analyzer;
 
         [Header("Recording Source")]
         [SerializeField] private float maxRecordingSec = 3;
         [SerializeField] private float recordingCoolDown = 1;
-        [SerializeField] private AudioSource recordingSource;
+        [SerializeField] private NoteRecorder noteRecorder;
 
         [Header("Animation")]
         [SerializeField] private Animator animator;
@@ -105,12 +105,7 @@ namespace WhisperPrototype
             //Change Animation
             animator.SetBool(ANIM_SINGING_BOOL, true);
             //Record with Audio Source
-            recordingSource.Stop();
-            recordingClip = Microphone.Start(device, false, 5, AudioSettings.outputSampleRate);
-            while (!(Microphone.GetPosition(device) > 0.02f)) {}
-            recordingSource.clip = recordingClip;
-            recordingSource.loop = true;
-            recordingSource.Play();
+            noteRecorder.BeginRecording(analyzer);
 
             PlayerWhisperingEvent.Call_OnPlayerStartWhispering(analyzer);
             AudioManager.Instance.PlaySFX(sfxWhisperData.name, 0.5f);
@@ -121,8 +116,7 @@ namespace WhisperPrototype
                 return;
             isRecording = false;
             animator.SetBool(ANIM_SINGING_BOOL, false);
-            recordingSource.Stop();
-            Microphone.End(device);
+            noteRecorder.EndRecording();
 
             PlayerWhisperingEvent.Call_OnPlayerStopWhispering();
             AudioManager.Instance.PlaySFX(sfxWhisperEndData.name, 0.5f);

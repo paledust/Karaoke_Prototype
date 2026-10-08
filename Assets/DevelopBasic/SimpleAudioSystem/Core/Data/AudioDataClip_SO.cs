@@ -7,5 +7,6 @@ namespace SimpleAudioSystem
     {
         [SerializeField] private AudioClip audioClip;
         internal override AudioClip GetAudioClip() => audioClip;
+        public void AssignClip(AudioClip clip) => audioClip = clip;
     }
 }
