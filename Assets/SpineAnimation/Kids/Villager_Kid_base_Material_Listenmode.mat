@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Villager_Kid_base_Material_Listenmode
+  m_Shader: {fileID: 4800000, guid: 1d1daf25b3d83404a953b1713b456030, type: 3}
+  m_ValidKeywords:
+  - _RADIUSMETHOD_VERTEX_UV
+  m_InvalidKeywords:
+  - _DISSOLVETYPE_RADIUS
+  - _EDGEBLEND_ALPHABLEND
+  - _FILLCOLORMODE_MULTIPLY
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveGuideTex:
+        m_Texture: {fileID: 2800000, guid: ad2d079fcb5212d459c1605f9bcd1c01, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: e77e50664873809498937c7f032f4658, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: b5d257126aa95244595e38842dc670a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 97a921d248636704ead1a9dcc3b43211, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: e77e50664873809498937c7f032f4658, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _DissolveLength: 0.4
+    - _DissolveRadius: 0
+    - _DissolveSmoothness: 0.1
+    - _DissolveSoftness: 1
+    - _DissolveType: 0
+    - _EdgeBlend: 0
+    - _EdgeSoftness: 1
+    - _EdgeValue: 0
+    - _EmissionScale: 1
+    - _EnableExternalAlpha: 0
+    - _FillColorMode: 0
+    - _FlatColor: 1
+    - _FlipX: 0
+    - _NoiseMax1: 1
+    - _NoiseMin1: -1.25
+    - _NoiseScale: 2
+    - _NoiseTiling1: 1
+    - _Outline: 0.865
+    - _OutlineRadius: 15
+    - _OutlineThreashold: 0.5
+    - _PatternScale: 1
+    - _RadiusCenterX: 0.5
+    - _RadiusCenterY: 0.5
+    - _RadiusMethod: 1
+    - _UseRectUV: 0
+    - _smoothness: 0.1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveCenter: {r: 0.3, g: 1, b: 0, a: 0}
+    - _DissolvePanSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _EdgeColor: {r: 2.828427, g: 2.029812, b: 1.209014, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor: {r: 5.656854, g: 2.9948053, b: 0.776431, a: 1}
+    - _FillColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FlatColorTint: {r: 0.3019608, g: 0.22352941, b: 0.3254902, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _NoiseMoveSpeed: {r: -0.02, g: 0.15, b: 0, a: 0}
+    - _NoiseSpeed1: {r: 1, g: 1, b: 0, a: 0}
+    - _Pivot: {r: 0, g: 0, b: 0, a: 0}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpriteRect: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

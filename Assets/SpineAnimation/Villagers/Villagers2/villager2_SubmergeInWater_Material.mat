@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: villager2_SubmergeInWater_Material
+  m_Shader: {fileID: 4800000, guid: 688e56a565d968b42ad7f949727d02bb, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e1a4c7f64bdfbcc49878c469fb7d64f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _CurveSharpness: 1
+    - _CurveValue: 1
+    - _Cutoff: 0.1
+    - _Depth: 0.5
+    - _DepthFadeMax: 1
+    - _DepthFadeMin: 0
+    - _EnableExternalAlpha: 0
+    - _HeightOffset: 0
+    - _InverseCurve: 0
+    - _OnlyRenderSubmerge: 0
+    - _OutlineMipLevel: 0
+    - _OutlineOpaqueAlpha: 1
+    - _OutlineReferenceTexWidth: 1024
+    - _OutlineSmoothness: 1
+    - _OutlineWidth: 3
+    - _RippleClip: 0.975
+    - _RippleStrength: 0.7
+    - _StencilComp: 8
+    - _StencilRef: 1
+    - _StraightAlphaInput: 1
+    - _ThresholdEnd: 0.25
+    - _Use8Neighbourhood: 1
+    - _Wave2Frequency: 3
+    - _Wave2Height: 0.015
+    - _Wave2Speed: -2
+    - _WaveFrequency: 15
+    - _WaveHeight: 0.025
+    - _WaveSpeed: -1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 0, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _RippleColor: {r: 0.62352943, g: 0.9647059, b: 0.9647059, a: 1}
+    - _WaterColor: {r: 0.7018868, g: 0.910566, b: 1, a: 1}
+  m_BuildTextureStacks: []

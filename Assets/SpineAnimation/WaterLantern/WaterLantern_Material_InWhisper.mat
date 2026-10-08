@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterLantern_Material_InWhisper
+  m_Shader: {fileID: 4800000, guid: 1d1daf25b3d83404a953b1713b456030, type: 3}
+  m_ValidKeywords:
+  - _RADIUSMETHOD_WORLD_UV
+  m_InvalidKeywords:
+  - _DISSOLVETYPE_RADIUS
+  - _EDGEBLEND_ALPHABLEND
+  - _FILLCOLORMODE_MULTIPLY
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    AlphaDepth: true
+    IGNOREPROJECTOR: true
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BlendTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: e77e50664873809498937c7f032f4658, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 19567b1341338d1498a6a22c6964fdf7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseMask:
+        m_Texture: {fileID: 2800000, guid: a479e85a43542004eaaf924054b23ac4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: e77e50664873809498937c7f032f4658, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StainNoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _AlphaCutoff: 0.5
+    - _AlphaThreashold: 0.5
+    - _BlendAmount: 0
+    - _Brightness: 1
+    - _BumpScale: 1
+    - _ColorFade: 0.47
+    - _ColorFadeSmoothness: 0.27
+    - _Cull: 0
+    - _CurveSharpness: 1
+    - _CurveValue: 1
+    - _CustomRenderQueue: 0
+    - _Cutoff: 0.1
+    - _DarkOffset: 0
+    - _Depth: 0.5
+    - _DepthFadeMax: 1
+    - _DepthFadeMin: 0
+    - _DissolveHeight: 0
+    - _DissolveLength: 0.15
+    - _DissolveRadius: 0
+    - _DissolveSmoothness: 0.1
+    - _DissolveThickness: 0.55
+    - _DstBlend: 10
+    - _EmissionPower: 2
+    - _EmissionScale: 20
+    - _EnableExternalAlpha: 0
+    - _FILL: 1
+    - _FillMode: 1
+    - _FillPhase: 1
+    - _FlatColor: 1
+    - _GrayPhase: 1
+    - _HeightOffset: 0
+    - _HeightScale: 0.3
+    - _Hue: 0
+    - _InverseCurve: 0
+    - _InverseNoise: 0
+    - _JitterX: 1
+    - _JitterY: 1
+    - _LightAffectsAdditive: 0
+    - _NoiseMax: 1
+    - _NoiseMin: -1.25
+    - _NoiseScale: 3
+    - _NoiseTiling: 1
+    - _NoiseX: 0.65
+    - _NoiseY: 0.65
+    - _OnlyInWhisper: 0
+    - _OnlyInWhisperMode: 0
+    - _OnlyRenderSubmerge: 0
+    - _Outline: 0
+    - _OutlineMaskChannel: 3
+    - _OutlineMipLevel: 0
+    - _OutlineOnly: 0
+    - _OutlineOpaqueAlpha: 1
+    - _OutlineRadius: 8
+    - _OutlineReferenceTexWidth: 1024
+    - _OutlineSmoothness: 1
+    - _OutlineThreashold: 0.5
+    - _OutlineWidth: 3
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RadiusMethod: 0
+    - _ReceiveShadows: 1
+    - _RenderQueue: 0
+    - _RimPower: 2
+    - _RippleClip: 0.975
+    - _RippleStrength: 0.7
+    - _Saturation: 1
+    - _ShadowAlphaCutoff: 0.1
+    - _SpotX: 0
+    - _SpotY: 0
+    - _SrcBlend: 1
+    - _StainColorFade: 0
+    - _StainColorFadeSmoothness: 0
+    - _StainNoiseStrength: 0.5
+    - _StainSmoothness: 0
+    - _StainThickness: 0
+    - _StencilComp: 8
+    - _StencilOperation: 3
+    - _StencilRef: 1
+    - _StraightAlphaInput: 1
+    - _ThresholdEnd: 0.25
+    - _TintBlack: 0
+    - _Use8Neighbourhood: 1
+    - _UseDissolve: 0
+    - _UseDissolve1: 0
+    - _UseOutlineTexture: 0
+    - _Use_Outline: 1
+    - _Wave2Frequency: 3
+    - _Wave2Height: 0.015
+    - _Wave2Speed: -2
+    - _WaveFrequency: 12
+    - _WaveHeight: 0.025
+    - _WaveSpeed: -1
+    - _WhisperOnly: 0
+    - _WhisperValueEffector: 5
+    - _ZWrite: 0
+    - _ZWriteOffset: 0.01
+    m_Colors:
+    - _Black: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DarkWaterColor: {r: 0.502608, g: 0.4371919, b: 0.518, a: 1}
+    - _DissolveCenter: {r: 0, g: 0.27, b: 0, a: 0}
+    - _DissolveCenterColor: {r: 0.52966, g: 0.3379597, b: 0.568, a: 1}
+    - _DissolveEdgeColor: {r: 0.190603, g: 0.1542058, b: 0.2339998, a: 1}
+    - _DissolveOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor: {r: 1.9331937, g: 0.9734614, b: 0.55096024, a: 1}
+    - _FillColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FixedNormal: {r: 0, g: 0, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _NoiseMoveSpeed: {r: -0.02, g: 0.05, b: 0, a: 0}
+    - _NoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
+    - _NoiseTiling: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 0, a: 1}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Pivot: {r: 0.61, g: -11.138, b: -9.348, a: 0}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _RippleColor: {r: 0.6235294, g: 0.9647059, b: 0.9647059, a: 1}
+    - _StainCenterColor: {r: 1, g: 1, b: 1, a: 1}
+    - _StainEdgeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _WaterColor: {r: 0.7018868, g: 0.910566, b: 1, a: 1}
+  m_BuildTextureStacks: []

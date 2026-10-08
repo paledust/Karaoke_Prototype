@@ -1,6 +1,12 @@
 ﻿<Solution>
   <Project Path="AmplifyShaderEditor.csproj" />
+  <Project Path="spine-unity-examples.csproj" />
+  <Project Path="spine-timeline-editor.csproj" />
+  <Project Path="spine-unity-editor.csproj" />
+  <Project Path="spine-timeline.csproj" />
+  <Project Path="spine-csharp.csproj" />
   <Project Path="DevUtil.csproj" />
+  <Project Path="spine-unity.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="DevBasic.StateMachine.csproj" />
   <Project Path="UniTask.Linq.csproj" />
@@ -12,6 +18,7 @@
   <Project Path="DevBasic.GameManager.csproj" />
   <Project Path="DevBasic.SimpleSave.csproj" />
   <Project Path="UniTask.DOTween.csproj" />
+  <Project Path="spine-unity-examples-editor.csproj" />
   <Project Path="DevUtilEditor.csproj" />
   <Project Path="DevBasic.CS_Bezier.csproj" />
   <Project Path="DrawExtension.csproj" />

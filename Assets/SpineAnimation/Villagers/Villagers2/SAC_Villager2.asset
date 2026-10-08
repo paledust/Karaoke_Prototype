@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6fd4d2d612b34499aa2240a47141c5, type: 3}
+  m_Name: SAC_Villager2
+  m_EditorClassIdentifier: 
+  states:
+  - stateName: wash_clothes_style1
+    animation: {fileID: 11400000, guid: 6f601912ddac8e94fa022e9262673408, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: wash_clothes_style2
+    animation: {fileID: 11400000, guid: 9b12d293e78c5734094129157637f539, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: pose_1
+    animation: {fileID: 11400000, guid: 376cab4b3ce669f4e944d8f4e716b1bb, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: pose_2
+    animation: {fileID: 11400000, guid: 40bb6cf0825383a4f823def8eeb67613, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: pain_1
+    animation: {fileID: 11400000, guid: 56a799014b1b1874196918e4d2646b3c, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  - stateName: pain_2
+    animation: {fileID: 11400000, guid: f871905f3e276ff449381e400e6e4360, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  oneShots: []
+  transitions: []

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6fd4d2d612b34499aa2240a47141c5, type: 3}
+  m_Name: SAC_MG_End
+  m_EditorClassIdentifier: 
+  states:
+  - stateName: idle
+    animation: {fileID: 11400000, guid: 4014c1aa93f211e4083a594ac5eeaf9d, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: rise_idle
+    animation: {fileID: 11400000, guid: 9a4e2cef6cd468049978ca5e3b02a89d, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: end_chanting_idle
+    animation: {fileID: 11400000, guid: 20adb6bf1ce77bd4c8351490b4b7adc8, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  oneShots: []
+  transitions: []

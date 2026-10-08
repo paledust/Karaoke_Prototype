@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6fd4d2d612b34499aa2240a47141c5, type: 3}
+  m_Name: SAC_Villager
+  m_EditorClassIdentifier: 
+  states:
+  - stateName: pain_1
+    animation: {fileID: 11400000, guid: 268ca4dcb3aa499459c5d2c76a42bc33, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  - stateName: pain_2
+    animation: {fileID: 11400000, guid: 1500d36fafde9e64d95a9718622a700c, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  - stateName: pain_3
+    animation: {fileID: 11400000, guid: 045e17c7e7a210348ba13a63c4d2e1a4, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  - stateName: walk
+    animation: {fileID: 11400000, guid: 2c35a7f5ae3955a418765e0705bd2a11, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: idle
+    animation: {fileID: 11400000, guid: 871255bc46f6ef74b84be337e7082a59, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: wait
+    animation: {fileID: 11400000, guid: f5411a512dea6074b85e04f53c6ad0e7, type: 2}
+    speed: 1
+    rndStartOffset: 1
+  - stateName: wash_clothes
+    animation: {fileID: 11400000, guid: 616bea9e94b4df049a9fa6ef8d4b20bf, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  oneShots:
+  - stateName: kneel
+    animation: {fileID: 11400000, guid: d7466d75c5e69704bbdd3b0b9b3e5c57, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: stop
+    animation: {fileID: 11400000, guid: 720829efb13e2274bafa8baf85780832, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  transitions:
+  - from: {fileID: 11400000, guid: 871255bc46f6ef74b84be337e7082a59, type: 2}
+    to: {fileID: 11400000, guid: 2c35a7f5ae3955a418765e0705bd2a11, type: 2}
+    transition: {fileID: 11400000, guid: 746a8b8b658170a4fb3e0e12fe0afa95, type: 2}
+    speed: 1
+  - from: {fileID: 11400000, guid: 2c35a7f5ae3955a418765e0705bd2a11, type: 2}
+    to: {fileID: 11400000, guid: 871255bc46f6ef74b84be337e7082a59, type: 2}
+    transition: {fileID: 11400000, guid: 720829efb13e2274bafa8baf85780832, type: 2}
+    speed: 1
