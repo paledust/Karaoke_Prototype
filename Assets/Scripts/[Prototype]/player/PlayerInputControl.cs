@@ -24,7 +24,7 @@ namespace WhisperPrototype
         [SerializeField] private NoteRecorder noteRecorder;
 
         [Header("Animation")]
-        [SerializeField] private Animator animator;
+        [SerializeField] private SpineAnimator spineAnimator;
 
         [Header("Audio")]
         [SerializeField] private AudioData_SO sfxWhisperData;
@@ -37,9 +37,18 @@ namespace WhisperPrototype
         private string device;
         private AudioClip recordingClip;
 
-        private const string ANIM_SINGING_BOOL = "IsSinging";
-        private const string TIRING_STATE = "tiring";
-        private const string ANIM_TIRED_BOOL = "IsTired";
+    #region Animation Key
+        private const string idleName = "idle";
+        private const string walkName = "walk";
+        private const string walkStartName = "walk_start";
+        private const string walkEndName = "walk_end";
+        private const string chantName = "listen";
+        private const string chantStartName = "listen_start";
+        private const string chantEndName = "listen_end";
+        private const string tiredStartName = "tired_start";
+        private const string tiredName = "tired";
+        private const string tiredEndName = "sit_end";
+    #endregion
 
         void Awake()
         {
@@ -88,11 +97,14 @@ namespace WhisperPrototype
             if(speed < 0)
                 characterRoot.localScale = new Vector3(-1, 1, 1);
             else
-                characterRoot.localScale = Vector3.one;         
+                characterRoot.localScale = Vector3.one;      
+                
+            spineAnimator.PlayOneShotAnimation(walkStartName, 0, walkName);   
         }
         void Stopping(InputAction.CallbackContext context)
         {
             speed = 0;
+            spineAnimator.PlayOneShotAnimation(walkEndName, 0, idleName);
         }
         #endregion
 
@@ -102,10 +114,10 @@ namespace WhisperPrototype
             if(isRecording || recordingCooling)
                 return;
             isRecording = true;
-            //Change Animation
-            animator.SetBool(ANIM_SINGING_BOOL, true);
             //Record with Audio Source
             noteRecorder.BeginRecording(analyzer);
+            //Change Animation
+            spineAnimator.PlayOneShotAnimation(chantStartName, 0, chantName);
 
             PlayerWhisperingEvent.Call_OnPlayerStartWhispering(analyzer);
             AudioManager.Instance.PlaySFX(sfxWhisperData.name, 0.5f);
@@ -115,8 +127,9 @@ namespace WhisperPrototype
             if(!isRecording)
                 return;
             isRecording = false;
-            animator.SetBool(ANIM_SINGING_BOOL, false);
             noteRecorder.EndRecording();
+            //Change Animation
+            spineAnimator.PlayOneShotAnimation(chantEndName, 0, idleName);
 
             PlayerWhisperingEvent.Call_OnPlayerStopWhispering();
             AudioManager.Instance.PlaySFX(sfxWhisperEndData.name, 0.5f);
@@ -129,16 +142,13 @@ namespace WhisperPrototype
         {
             recordingCooling = true;
             if(isTired)
-            {
-                animator.SetBool(ANIM_TIRED_BOOL, true);
-                animator.Play(TIRING_STATE);
-            }
+                spineAnimator.PlayOneShotAnimation(tiredStartName, 0, tiredName);
+
             yield return new WaitForSeconds(isTired?recordingCoolDown:0.75f);
             recordingTimer = 0;
             if(isTired)
-            {
-                animator.SetBool(ANIM_TIRED_BOOL, false);
-            }
+                spineAnimator.PlayOneShotAnimation(tiredEndName, 0, idleName);
+
             recordingCooling = false;
         }   
     }

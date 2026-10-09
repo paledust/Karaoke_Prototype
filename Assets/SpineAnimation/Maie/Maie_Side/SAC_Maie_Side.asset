@@ -12,6 +12,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9dedaf895bd81449c4f1a2083c0b3e, type: 3}
   m_Name: SAC_Maie_Side
   m_EditorClassIdentifier: 
-  states: []
-  oneShots: []
+  states:
+  - stateName: listen
+    animation: {fileID: 11400000, guid: 5e836bf5367b74c478d6cf089ab3395e, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: run
+    animation: {fileID: 11400000, guid: 7f55280841f7694488fef8e5d485a5dd, type: 2}
+    speed: 2
+    rndStartOffset: 0
+  - stateName: walk
+    animation: {fileID: 11400000, guid: 0213d6758cafb7e41bce485a7462ac6a, type: 2}
+    speed: 2
+    rndStartOffset: 0
+  - stateName: sit
+    animation: {fileID: 11400000, guid: f5522f8c10a93c7479cfaea775a37884, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: pick
+    animation: {fileID: 11400000, guid: 0fc527cf9030f774a91d041f70a65b31, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: shock
+    animation: {fileID: 11400000, guid: 8d2651663d6542a4c9a18e0109f90106, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: idle
+    animation: {fileID: 11400000, guid: 70450e63b576e0d4c9bbd7a286c00546, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: tired
+    animation: {fileID: 11400000, guid: fd9c56623e9dc8648b3d62ef10af3654, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  oneShots:
+  - stateName: blink
+    animation: {fileID: 11400000, guid: 2131f620ddd16544c99dcc5558340b2e, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: listen_start
+    animation: {fileID: 11400000, guid: 063bbacd17e04ce47af9fe9264a7a0be, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: listen_end
+    animation: {fileID: 11400000, guid: 29c244e367440f04abccc3cd3c603d93, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: run_start
+    animation: {fileID: 11400000, guid: 74b114b8704795d45953b8f3dece4536, type: 2}
+    speed: 2
+    rndStartOffset: 0
+  - stateName: run_end
+    animation: {fileID: 11400000, guid: 898e5ecb948165249b77df29bd2f5b02, type: 2}
+    speed: 2
+    rndStartOffset: 0
+  - stateName: walk_start
+    animation: {fileID: 11400000, guid: 233dd748cd6f86540a149a02507a270d, type: 2}
+    speed: 2
+    rndStartOffset: 0
+  - stateName: walk_end
+    animation: {fileID: 11400000, guid: 8380bcd96c5b4ac428c69eecbdf72c5e, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: kneel
+    animation: {fileID: 11400000, guid: 5c86485aec61643419f515927b39080c, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: jump
+    animation: {fileID: 11400000, guid: 99e97926c61179d4ca6fb63741dc7e19, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: sit_start
+    animation: {fileID: 11400000, guid: 990567545d47de945aed6b6ca09b5170, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: sit_end
+    animation: {fileID: 11400000, guid: 6a9538f0fec01a347a641896e7c2dd31, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: pick_up
+    animation: {fileID: 11400000, guid: 027d5b2f1756e8e41a27092013a24551, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: shock_start
+    animation: {fileID: 11400000, guid: f385310991692dc4893bb5253ccc0ab6, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: shock_end
+    animation: {fileID: 11400000, guid: 8c10a09dae78cb148b1a8b19da00e8da, type: 2}
+    speed: 1
+    rndStartOffset: 0
+  - stateName: tired_start
+    animation: {fileID: 11400000, guid: 7b034e8c56afa4847a110ef408a08ff9, type: 2}
+    speed: 1
+    rndStartOffset: 0
   transitions: []

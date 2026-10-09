@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6221122750795792190}
-  - component: {fileID: 315550595599595611}
+  - component: {fileID: 6450235996706453498}
   - component: {fileID: 4556651302512858017}
   - component: {fileID: 8029922924063602915}
   - component: {fileID: 4548929727339372791}
@@ -146,8 +146,8 @@ Transform:
   - {fileID: 4877632395267277418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1818360608 &315550595599595611
-PositionConstraint:
+--- !u!1773428102 &6450235996706453498
+ParentConstraint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,12 +157,19 @@ PositionConstraint:
   serializedVersion: 2
   m_Weight: 1
   m_TranslationAtRest: {x: -3.95, y: 0.5, z: 0}
-  m_TranslationOffset: {x: 0, y: 0, z: 10}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
-  m_Active: 1
-  m_IsLocked: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 0
+  m_IsLocked: 0
   m_Sources:
   - sourceTransform: {fileID: 0}
     weight: 1
@@ -175,7 +182,7 @@ SortingGroup:
   m_GameObject: {fileID: 399147776319813098}
   m_Enabled: 1
   m_SortingLayerID: -1736365455
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
