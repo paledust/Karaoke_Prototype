@@ -5,7 +5,8 @@ namespace WhisperPrototype.Book
 {
     public class BookOfWhisper : MonoBehaviour
     {
-        [SerializeField] private BookWhisperRecorder whisperRecorder;         
+        [SerializeField] private BookWhisperRecorder whisperRecorder;
+        [SerializeField] private PlayerInputControl playerInput;     
 
         [Header("Book Open")]
         [SerializeField] private Animation animeBook;
@@ -21,7 +22,8 @@ namespace WhisperPrototype.Book
             whisperRecorder.CleanUp();
             if(isLearningWhisper)
                 whisperRecorder.PrepareForNewWhisper(newWhisper);
-                
+            
+            playerInput.LockMovement();
             await UniTask.WaitForSeconds(animeBook[ANIME_OPEN_KEY].length);
         }
         public async UniTask CloseBook()
@@ -30,6 +32,7 @@ namespace WhisperPrototype.Book
             await UniTask.WaitForSeconds(animeBook[ANIME_CLOSE_KEY].length);
             gameObject.SetActive(false);
             whisperRecorder.CleanUp();
+            playerInput.UnlockMovement();
         }
     }
 }

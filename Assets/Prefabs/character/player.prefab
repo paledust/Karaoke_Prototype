@@ -5113,6 +5113,7 @@ GameObject:
   - component: {fileID: 2066271109389544144}
   - component: {fileID: 6547377955023818500}
   - component: {fileID: 8775431101210786708}
+  - component: {fileID: 7114294284580042930}
   m_Layer: 0
   m_Name: voice_orb
   m_TagString: Untagged
@@ -5206,8 +5207,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876c67440c2ea444086f6e8774a024a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SingingOrb
-  volumeScale: {x: 0.6, y: 5}
+  volumeScale: {x: 0.6, y: 3}
   sprite: {fileID: 6547377955023818500}
+  spriteFadingAnimation: {fileID: 7114294284580042930}
+--- !u!111 &7114294284580042930
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4951785150679676895}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 22d36d374dc2ed5479dc44ef51943f02, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 22d36d374dc2ed5479dc44ef51943f02, type: 2}
+  - {fileID: 7400000, guid: 389c70e43931d1645b4a8b805352819b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &5006760911232197106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5543,8 @@ MonoBehaviour:
   characterRoot: {fileID: 2542993359128456630}
   analyzer: {fileID: 6651674100240091244}
   maxRecordingSec: 3.5
-  recordingCoolDown: 1.5
+  recordingBreakCoolDown: 1.5
+  recordingCoolDown: 0.5
   noteRecorder: {fileID: 4114113893753156519}
   spineAnimator: {fileID: 2962501514580376442}
   sfxWhisperData: {fileID: 11400000, guid: f746039ae8c774b4c9ff5efc971e8b1e, type: 2}
@@ -5570,7 +5591,6 @@ MonoBehaviour:
   volumeGate: 0.005
   volumeTolerance: 0.002
   recordingTimeGate: 0.3
-  longNoteTimeGate: 1.2
   recordingState: 0
   recordingSource: {fileID: 7870586669602458367}
   whisperHandler: {fileID: 5194088821656182733}

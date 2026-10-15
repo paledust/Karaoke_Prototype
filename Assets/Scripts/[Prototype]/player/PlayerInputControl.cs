@@ -20,6 +20,7 @@ namespace WhisperPrototype
 
         [Header("Recording Source")]
         [SerializeField] private float maxRecordingSec = 3;
+        [SerializeField] private float recordingBreakCoolDown = 1.5f;
         [SerializeField] private float recordingCoolDown = 1;
         [SerializeField] private NoteRecorder noteRecorder;
 
@@ -30,12 +31,13 @@ namespace WhisperPrototype
         [SerializeField] private AudioData_SO sfxWhisperData;
         [SerializeField] private AudioData_SO sfxWhisperEndData;
 
+        private bool canMove;
         private bool isRecording;
         private bool recordingCooling;
         private float recordingTimer;
         private float speed;
-        private string device;
-        private AudioClip recordingClip;
+
+        public float m_recordingProgress => recordingTimer/maxRecordingSec;
 
     #region Animation Key
         private const string idleName = "idle";
@@ -52,11 +54,8 @@ namespace WhisperPrototype
 
         void Awake()
         {
+            canMove = true;
             isRecording = false;
-        }
-        void Start()
-        {
-            device = Microphone.devices[0];
         }
         void OnEnable()
         {
@@ -90,9 +89,21 @@ namespace WhisperPrototype
             }
         }
 
+        public void LockMovement()
+        {
+            canMove = false;
+            Stopping(default);
+        }
+        public void UnlockMovement()
+        {
+            canMove = true;
+        }
+
         #region Movement Event
         void Moving(InputAction.CallbackContext context)
         {
+            if(!canMove)
+                return;
             speed = context.ReadValue<float>();
             if(speed < 0)
                 characterRoot.localScale = new Vector3(-1, 1, 1);
@@ -104,13 +115,15 @@ namespace WhisperPrototype
         void Stopping(InputAction.CallbackContext context)
         {
             speed = 0;
-            spineAnimator.PlayOneShotAnimation(walkEndName, 0, idleName);
+            if(spineAnimator.IsState(walkName))
+                spineAnimator.PlayOneShotAnimation(walkEndName, 0, idleName);
         }
         #endregion
 
         #region Whisper Event
         void StartRecording(InputAction.CallbackContext context)
         {
+            speed = 0;
             if(isRecording || recordingCooling)
                 return;
             isRecording = true;
@@ -121,6 +134,8 @@ namespace WhisperPrototype
 
             PlayerWhisperingEvent.Call_OnPlayerStartWhispering(analyzer);
             AudioManager.Instance.PlaySFX(sfxWhisperData.name, 0.5f);
+
+            LockMovement();
         }
         void StopRecording(InputAction.CallbackContext context)
         {
@@ -144,12 +159,13 @@ namespace WhisperPrototype
             if(isTired)
                 spineAnimator.PlayOneShotAnimation(tiredStartName, 0, tiredName);
 
-            yield return new WaitForSeconds(isTired?recordingCoolDown:0.75f);
+            yield return new WaitForSeconds(isTired?recordingBreakCoolDown:recordingCoolDown);
             recordingTimer = 0;
             if(isTired)
                 spineAnimator.PlayOneShotAnimation(tiredEndName, 0, idleName);
 
             recordingCooling = false;
+            UnlockMovement();
         }   
     }
 }

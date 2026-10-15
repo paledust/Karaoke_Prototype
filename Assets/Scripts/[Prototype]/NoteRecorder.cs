@@ -16,7 +16,6 @@ namespace WhisperPrototype
         [SerializeField] private float volumeGate;
         [SerializeField] private float volumeTolerance;
         [SerializeField] private float recordingTimeGate;
-        [SerializeField] private float longNoteTimeGate;
         [SerializeField, ShowOnly] private NoteRecordingState recordingState;
 
         [Header("Recording Source")]

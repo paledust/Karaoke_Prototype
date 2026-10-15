@@ -25737,6 +25737,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4508348038496530328, guid: 85c5408712dd42f42afa8d5310cbf45d, type: 3}
   m_PrefabInstance: {fileID: 8374395428249842897}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2064662698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6052286842469345753, guid: 85c5408712dd42f42afa8d5310cbf45d, type: 3}
+  m_PrefabInstance: {fileID: 8374395428249842897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f6a349d9998ee4ab64ca675268a586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
 --- !u!1 &2090361547
 GameObject:
   m_ObjectHideFlags: 0
@@ -26613,6 +26624,10 @@ PrefabInstance:
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 1459066660}
+    - target: {fileID: 8029922924063602915, guid: 32aa9b0987f370c4aaa0b30ab030eef1, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 2064662698}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
