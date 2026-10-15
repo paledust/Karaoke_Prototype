@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c16331b23b28b714699aa703a52b32f5, type: 3}
-  m_Name: sfx_whisper_greeting_player
+  m_Name: sfx_whisper_comfort
   m_EditorClassIdentifier: DevBasic.AudioSystem::SimpleAudioSystem.AudioDataClip_SO
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 0e3fff4e43520e74790030effa843f65, type: 3}

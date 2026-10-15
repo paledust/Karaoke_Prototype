@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookOfWhisper
   whisperRecorder: {fileID: 4548929727339372791}
+  playerInput: {fileID: 0}
   animeBook: {fileID: 5677756598036695349}
 --- !u!114 &4548929727339372791
 MonoBehaviour:
@@ -697,6 +698,7 @@ GameObject:
   - component: {fileID: 7653857364342769438}
   - component: {fileID: 3190762502909813450}
   - component: {fileID: 1104419913942767194}
+  - component: {fileID: 517708042107886866}
   m_Layer: 0
   m_Name: voice_orb
   m_TagString: Untagged
@@ -792,6 +794,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SingingOrb
   volumeScale: {x: 0.6, y: 5}
   sprite: {fileID: 3190762502909813450}
+  spriteFadingAnimation: {fileID: 517708042107886866}
+--- !u!111 &517708042107886866
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3612852560419396113}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 22d36d374dc2ed5479dc44ef51943f02, type: 2}
+  - {fileID: 7400000, guid: 389c70e43931d1645b4a8b805352819b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &4384286096512638105
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +962,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
