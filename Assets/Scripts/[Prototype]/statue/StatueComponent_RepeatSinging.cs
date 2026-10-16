@@ -8,7 +8,6 @@ namespace WhisperPrototype.Statue
     public class StatueComponent_RepeatSinging : MonoBehaviour
     {
         [SerializeField] private float playerCycle;
-
         private Statue statue;
         private CoroutineExcuter whisperPlayer;
 

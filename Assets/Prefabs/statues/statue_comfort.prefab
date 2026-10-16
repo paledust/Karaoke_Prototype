@@ -84,9 +84,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5588227746944096135, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      propertyPath: whisper
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fde36862f246324abb9f4285ccec6a6, type: 2}
     - target: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: m_Name
-      value: statue_greeting
+      value: statue_comfort
       objectReference: {fileID: 0}
     - target: {fileID: 6631269194430000402, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
       propertyPath: m_SortingOrder
@@ -111,5 +115,26 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6332010452320810473}
   m_SourcePrefab: {fileID: 100100000, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+--- !u!1 &8041721044351104177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6099609521337331627, guid: 29be27a6549629e43b69d129b73e42fe, type: 3}
+  m_PrefabInstance: {fileID: 4269346631552490266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6332010452320810473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8041721044351104177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d36f80a4cb5e945a6d3112dc3d20d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.Statue.StatueComponent_RepeatSinging
+  playerCycle: 7
