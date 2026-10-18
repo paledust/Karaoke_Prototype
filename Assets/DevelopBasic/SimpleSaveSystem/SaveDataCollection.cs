@@ -13,16 +13,10 @@ namespace SimpleSaveSystem
     }
     [Serializable]
     public class SettingSaveData{}
-    [Serializable]
-    public class PlayerSaveData
-    {
-        public Vector3 playerPos;
-        public Quaternion playerRot;
-        public Quaternion camRot;
-    }
+
     [Serializable]
     public class SaveData
     {
-        public PlayerSaveData playerSaveData;
+        public List<string> learnedWhisper = new List<string>();
     }
 }

@@ -7,8 +7,9 @@ namespace WhisperPrototype
     public class WhisperWordDataCollection_SO : DataCollection<WhisperWordData_SO>
     {
         private Dictionary<string, WhisperWordData_SO> dictWhisper;
-        void Awake()
+        void OnEnable()
         {
+            Debug.LogWarning("Init");
             dictWhisper = new Dictionary<string, WhisperWordData_SO>();
             foreach(var whisper in DataList)
             {

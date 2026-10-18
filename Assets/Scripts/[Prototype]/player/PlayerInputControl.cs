@@ -115,7 +115,7 @@ namespace WhisperPrototype
         void Stopping(InputAction.CallbackContext context)
         {
             speed = 0;
-            if(spineAnimator.IsState(walkName))
+            if(spineAnimator.IsState(walkName)||spineAnimator.IsPlaying(walkStartName))
                 spineAnimator.PlayOneShotAnimation(walkEndName, 0, idleName);
         }
         #endregion

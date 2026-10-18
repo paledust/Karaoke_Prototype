@@ -87,10 +87,10 @@ namespace GameBasic
             SaveManager.LoadGameState(0);
             RestartLevel();
         }
-        void OnApplicationQuit()
+        async void OnApplicationQuit()
         {
             Debug.Log("GameManager: Application is quitting. Saving game...");
-            SaveManager.SaveGameState(0);
+            await SaveManager.SaveGameState(0);
         }
         #endregion
 

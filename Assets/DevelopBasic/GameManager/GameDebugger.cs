@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using SimpleSaveSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,7 +36,7 @@ namespace GameBasic.Debugger
                 GameManager.Instance.RestartLevel();
             }
         }
-        void Debug_Save(InputAction.CallbackContext callback)=>SaveManager.SaveGameState(0);
+        void Debug_Save(InputAction.CallbackContext callback)=>SaveManager.SaveGameState(0).Forget();
         void Debug_Load(InputAction.CallbackContext callback)=>SaveManager.LoadGameState(0);
     #endregion
     }

@@ -23,13 +23,14 @@ namespace SimpleSaveSystem{
         #endif
         }
         public static void CleanGameState(int slotIndex){
-            string filePath = Application.persistentDataPath + SAVEFILE_DIRECTOR + $"/{slotIndex}/" + SAVEFILE_NAME;
+            string filePath = GetPersistentDataPath(SAVEFILE_DIRECTOR) + $"/{slotIndex}/" + SAVEFILE_NAME;
             if(File.Exists(filePath)) File.Delete(filePath);
         }
         public static async UniTask NewGameState(int slotIndex)
         {
             CleanGameState(slotIndex);
             string folderPath = GetPersistentDataPath(SAVEFILE_DIRECTOR) + $"/{slotIndex}/";
+            Debug.LogWarning($"Folder Path:{GetPersistentDataPath(SAVEFILE_DIRECTOR)}");
 
             var saveData = new SaveData();
             SaveEventHandler.Call_OnBeginSave();
@@ -41,8 +42,8 @@ namespace SimpleSaveSystem{
             SaveEventHandler.Call_OnCompleteSave();
         }
         public static async UniTask SaveGameState(int slotIndex){
-            string globalFolderPath = Application.persistentDataPath + SAVEFILE_DIRECTOR;
-            string folderPath = Application.persistentDataPath + SAVEFILE_DIRECTOR + $"/{slotIndex}/";
+            string globalFolderPath = GetPersistentDataPath(SAVEFILE_DIRECTOR);
+            string folderPath = GetPersistentDataPath(SAVEFILE_DIRECTOR) + $"/{slotIndex}/";
 
         //To save, we first Load
             var saveData = Load<SaveData>(folderPath, SAVEFILE_NAME);
@@ -69,7 +70,7 @@ namespace SimpleSaveSystem{
         }
 
         public static void LoadGameState(int slotIndex){
-            string path = Application.persistentDataPath + SAVEFILE_DIRECTOR + $"/{slotIndex}/";
+            string path = GetPersistentDataPath(SAVEFILE_DIRECTOR) + $"/{slotIndex}/";
             var saveData = Load<SaveData>(path, SAVEFILE_NAME);
             if(saveData == null){
                 Debug.LogWarning("No Valid Save Data");
@@ -84,8 +85,8 @@ namespace SimpleSaveSystem{
         }
         
         public static void Initialize(){
-            string folderPath = Application.persistentDataPath + SAVEFILE_DIRECTOR;
-            string globalFilePath = Application.persistentDataPath + SAVEFILE_DIRECTOR + GLOBALFILE_NAME;
+            string folderPath = GetPersistentDataPath(SAVEFILE_DIRECTOR);
+            string globalFilePath = GetPersistentDataPath(SAVEFILE_DIRECTOR) + GLOBALFILE_NAME;
 
         // Create save folder if not found
             if(!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);

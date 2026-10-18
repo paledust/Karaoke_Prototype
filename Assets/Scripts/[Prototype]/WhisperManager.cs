@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
+using SimpleSaveSystem;
 using UnityEngine;
 
 namespace WhisperPrototype
 {
-    public class WhisperingManager : Singleton<WhisperingManager>
+    public class WhisperingManager : Singleton<WhisperingManager>, ISaveable
     {
+        [SerializeField, ShowOnly] private string byteGuid = Guid.NewGuid().ToString();
         [SerializeField] private WhisperWordDataCollection_SO whisperWordsCollection;
         [SerializeField] private VoiceSpectrumData_SO whisperSpectrum;
         [SerializeField] private Vector2 volumeRange;
@@ -13,11 +16,32 @@ namespace WhisperPrototype
 
         private List<WhisperWordData_SO> learnedWhisperData;
 
+        public Guid guid => new Guid(byteGuid);
+
         protected override void Awake()
         {
             base.Awake();
             learnedWhisperData = new List<WhisperWordData_SO>();
         }
+
+    #region Save
+        public void RestoreState(SaveData state)
+        {
+            var learnedWhisperKey = state.learnedWhisper;
+            for(int i=0; i<learnedWhisperKey.Count; i++)
+            {
+                UnlockWhisper(whisperWordsCollection.GetDataByKey(learnedWhisperKey[i]));
+            }
+        }
+        public void CaptureState(ref SaveData saveData)
+        {
+            saveData.learnedWhisper = new List<string>();
+            for(int i=0; i<learnedWhisperData.Count; i++)
+            {
+                saveData.learnedWhisper.Add(learnedWhisperData[i].GetKey());
+            }
+        }
+    #endregion
         public static Color GetSpectrumColor(int noteIndex)
         {
             int spectrumIndex = GetValidatePitchIndex(noteIndex);
