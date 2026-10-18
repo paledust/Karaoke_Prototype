@@ -9,12 +9,9 @@ namespace WhisperPrototype
         private Dictionary<string, WhisperWordData_SO> dictWhisper;
         void OnEnable()
         {
-            Debug.LogWarning("Init");
             dictWhisper = new Dictionary<string, WhisperWordData_SO>();
             foreach(var whisper in DataList)
-            {
-                dictWhisper[whisper.GetKey()] = whisper;
-            }
+                dictWhisper.TryAdd(whisper.GetKey(), whisper);
         }
         public override WhisperWordData_SO GetDataByKey(string key) => dictWhisper[key];
         public WhisperWordData_SO GetWhisperByNote(int[] notes)

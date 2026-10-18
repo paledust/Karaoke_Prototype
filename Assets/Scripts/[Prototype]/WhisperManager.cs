@@ -27,11 +27,11 @@ namespace WhisperPrototype
     #region Save
         public void RestoreState(SaveData state)
         {
-            var learnedWhisperKey = state.learnedWhisper;
-            for(int i=0; i<learnedWhisperKey.Count; i++)
-            {
-                UnlockWhisper(whisperWordsCollection.GetDataByKey(learnedWhisperKey[i]));
-            }
+            // var learnedWhisperKey = state.learnedWhisper;
+            // for(int i=0; i<learnedWhisperKey.Count; i++)
+            // {
+            //     UnlockWhisper(whisperWordsCollection.GetDataByKey(learnedWhisperKey[i]));
+            // }
         }
         public void CaptureState(ref SaveData saveData)
         {

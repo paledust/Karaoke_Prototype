@@ -32,9 +32,6 @@ namespace GameBasic
             //帧数设置
             Application.targetFrameRate = targetFrameRate;
 
-            //游戏存档初始化
-            SaveManager.Initialize();
-            SaveManager.LoadGameState(0);
 
             //游戏组件初始化
             if(gameInitiator == null)
@@ -43,6 +40,14 @@ namespace GameBasic
                 return;
             }
             await gameInitiator.GameInit();
+            
+            //游戏存档初始化
+            SaveManager.Initialize();
+        }
+        void Start()
+        {
+            //加载存档
+            SaveManager.LoadGameState(0);
             
             //场景加载
         #if UNITY_EDITOR
