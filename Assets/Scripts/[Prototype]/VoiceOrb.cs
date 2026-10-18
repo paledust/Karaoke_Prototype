@@ -41,7 +41,7 @@ namespace WhisperPrototype
                 return;
 
             float scale = Mathf.Lerp(volumeScale.x, volumeScale.y, playerInput.m_recordingProgress);
-            Color color = WhisperingManager.GetSpectrumColor(targetAnalyzer.m_rawPitchIndex);
+            Color color = WhisperingManager.GetSpectrumColor(targetAnalyzer.m_smoothRawPitch);
 
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * scale, Time.deltaTime * 5);
             sprite.color = Color.Lerp(sprite.color, color, Time.deltaTime * 10);

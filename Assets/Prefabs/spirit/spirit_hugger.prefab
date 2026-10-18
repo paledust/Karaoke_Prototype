@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486233853814654640}
   - component: {fileID: 6546918033356891168}
+  - component: {fileID: 1478426775595187859}
   m_Layer: 0
   m_Name: '#render'
   m_TagString: Untagged
@@ -138,6 +139,25 @@ SortingGroup:
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
+--- !u!114 &1478426775595187859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568654364002847692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69278b8b2cb8bc841ad21aa2f51d844b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingMotion
+  floatFreq: 0.5
+  floatHeight: 0.1
+  floatOffset: 0.02
+  floatPhase: 0
+  ControlFactor: 1
+  noiseScale: 0.25
+  noiseFreq: 0.5
 --- !u!1 &6160190995480026010
 GameObject:
   m_ObjectHideFlags: 0

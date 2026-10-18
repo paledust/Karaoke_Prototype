@@ -22,6 +22,7 @@ public class VoiceDebugger : MonoBehaviour
     {
         debugStyle = new GUIStyle();
         debugStyle.fontSize = 36;
+        debugStyle.normal.textColor = Color.red;
     }
 
     void OnGUI()
@@ -29,8 +30,8 @@ public class VoiceDebugger : MonoBehaviour
         GUILayout.Label("Freq: " + audioAnalyzer.m_freq.ToString() + "Hz", debugStyle);
         GUILayout.Label("Note: " + audioAnalyzer.m_note, debugStyle);
         GUILayout.Label("Volume Level: " + audioAnalyzer.m_volumeLevel.ToString(), debugStyle);
-        GUILayout.Label("Raw Pitch Index :" + audioAnalyzer.m_rawPitchIndex.ToString(), debugStyle);
-        GUILayout.Label("Pitch Index :" + audioAnalyzer.m_noteIndex.ToString(), debugStyle);
+        GUILayout.Label("Smooth Pitch Index :" + audioAnalyzer.m_smoothRawPitch.ToString(), debugStyle);
+        GUILayout.Label("Note Index :" + audioAnalyzer.m_noteIndex.ToString(), debugStyle);
     }
     Vector3 Plot(float[] data, int num, float x0, float y0, float w, float h, Color col, float thr)
     {

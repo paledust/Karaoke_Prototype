@@ -11,11 +11,11 @@ namespace WhisperPrototype
         {
             Pending = 0,
             Recording = 1,
-            Concluding = 2,
         }
         [SerializeField] private float volumeGate;
         [SerializeField] private float volumeTolerance;
-        [SerializeField] private float recordingTimeGate;
+        [SerializeField] private float noteSampleMinGate;
+        [SerializeField] private float silenceGate = 0.5f;
         [SerializeField, ShowOnly] private NoteRecordingState recordingState;
 
         [Header("Recording Source")]
@@ -25,8 +25,11 @@ namespace WhisperPrototype
         [SerializeField] private WhisperHandler whisperHandler;
         
         private string device;
-        private float stateTimer;
-        private List<int> listNotes;
+        private float noteMaintainTimer;
+        private float silenceTimer;
+        private int lastRecordedNote;
+        private int chantingNote;
+        [SerializeField, ShowOnly] private List<int> listNotes;
         private AudioAnalyzer audioAnalyzer;
         
         public event Action<WhisperWordData_SO> OnNoteMatchingWhisper;
@@ -35,6 +38,7 @@ namespace WhisperPrototype
         {
             listNotes = new List<int>();
             recordingState = NoteRecordingState.Pending;
+            chantingNote = -1;
         }
 
         // Update is called once per frame
@@ -49,45 +53,60 @@ namespace WhisperPrototype
                     {
                         // Enter Note Recording
                         recordingState = NoteRecordingState.Recording;
-                        stateTimer = 0;
+                        noteMaintainTimer = 0;
+                        chantingNote = -1;
+                        lastRecordedNote = -1;
 
                         return;
                     }
                     return;
                 case NoteRecordingState.Recording:
-                    stateTimer += Time.deltaTime;
-                    // currentBuildingDisplayer.UpdateNote(WhisperingManager.GetSpectrumColor(audioAnalyzer.m_rawPitchIndex));
-
-                    if(audioAnalyzer.m_volumeLevel < Mathf.Max(0, volumeGate - volumeTolerance))
+                    if(audioAnalyzer == null)
                     {
-                        if(stateTimer > recordingTimeGate)
-                        {
-                            recordingState = NoteRecordingState.Concluding;
-                            stateTimer = 0;
+                        recordingState = NoteRecordingState.Pending;
+                        noteMaintainTimer = 0;
+                        chantingNote = -1;
+                        lastRecordedNote = -1;
 
-                            listNotes.Add(WhisperingManager.GetValidatePitchIndex(audioAnalyzer.m_rawPitchIndex));
-                            return;
-                        }
-                        else
+                        return;
+                    }
+                    if(chantingNote!=PitchToNote())
+                    {
+                        noteMaintainTimer = 0;
+                        chantingNote = PitchToNote();
+                    }
+                    else
+                    {
+                        noteMaintainTimer += Time.deltaTime;
+                        if(noteMaintainTimer >= noteSampleMinGate && lastRecordedNote!=chantingNote)
                         {
-                            // Not enough recording time, discard the note and go back to pending state
-                            recordingState = NoteRecordingState.Pending;
-                            stateTimer = 0;
-
-                            return;
+                            lastRecordedNote = chantingNote;
+                            listNotes.Add(chantingNote);
                         }
                     }
 
-                    return;
-                case NoteRecordingState.Concluding:
-                    recordingState = NoteRecordingState.Pending;
-                    stateTimer = 0;
+                    if(audioAnalyzer.m_volumeLevel < Mathf.Max(0, volumeGate - volumeTolerance))
+                    {
+                        silenceTimer += Time.deltaTime;
+                        chantingNote = -1;
+                        if(silenceTimer > silenceGate)
+                        {
+                            recordingState = NoteRecordingState.Pending;
+                            chantingNote = -1;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        silenceTimer = 0;
+                    }
 
                     return;
             }
         }
-        
+
         #region Recording
+        int PitchToNote() => WhisperingManager.GetValidatePitchIndex(audioAnalyzer.m_smoothRawPitch);
         public void BeginRecording(AudioAnalyzer audioAnalyzer)
         {
             recordingSource.Stop();
@@ -107,9 +126,7 @@ namespace WhisperPrototype
             recordingSource.Stop();
             RecordManager.Instance.StopRecording();
 
-            // Reset State and Clean up
-            if(recordingState != NoteRecordingState.Pending)
-                recordingState = NoteRecordingState.Pending;
+            this.audioAnalyzer = null;
 
             if(listNotes!=null && listNotes.Count>0)
             {
@@ -118,7 +135,6 @@ namespace WhisperPrototype
                 {
                     whisperHandler.TryCastWhisper(whisper);
                     OnNoteMatchingWhisper?.Invoke(whisper);
-
                 }
             }
             listNotes.Clear();

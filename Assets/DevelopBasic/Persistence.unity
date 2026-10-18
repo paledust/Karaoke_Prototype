@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dcd5cf6a1a6874a9638277c36473a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperingManager
+  byteGuid: 28c57c7c-348a-46f3-a5c3-f61eedee4cb0
   whisperWordsCollection: {fileID: 11400000, guid: 781139a35c60e4247845c57670fb3826, type: 2}
   whisperSpectrum: {fileID: 11400000, guid: 0c7a28844bf09824d9a574431965ee65, type: 2}
   volumeRange: {x: 0, y: 0.3}
@@ -430,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb81c8f14c6795548878a11004e4404f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecordManager
+  isRecording: 0
 --- !u!1 &1568973296
 GameObject:
   m_ObjectHideFlags: 0

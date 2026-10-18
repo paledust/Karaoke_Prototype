@@ -112,6 +112,7 @@ namespace WhisperPrototype
             whisperData.AssignClipToPlayerAudioData(clip);
 
             //Save Clip as .wav file
+            clip = SaveWav.TrimSilence(clip, 0.1f);
             SaveWav.Save(GetPlayerWhisperClipPath(whisperData.GetKey()), clip);
 
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6883316302363335138}
   - component: {fileID: 7870586669602458367}
   m_Layer: 0
-  m_Name: sfx_character
+  m_Name: sfx_recording
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5071,6 +5071,135 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &3583300778209204203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505794718807792397}
+  - component: {fileID: 8458422110348213840}
+  m_Layer: 0
+  m_Name: sfx_whispering
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505794718807792397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583300778209204203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4508348038496530328}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8458422110348213840
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583300778209204203}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2214735404682427325, guid: f6c02be646bcea74fbaf33509a868ee4, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3881808206378666272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,6 +5454,7 @@ Transform:
   - {fileID: 2542993359128456630}
   - {fileID: 918421890849562837}
   - {fileID: 6883316302363335138}
+  - {fileID: 1505794718807792397}
   - {fileID: 5241635292631128994}
   - {fileID: 2281049417932835624}
   m_Father: {fileID: 0}
@@ -5437,6 +5567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWhisperCaster
   whisperHandler: {fileID: 5194088821656182733}
   playerAnime: {fileID: 7073336593823798500}
+  whisperSource: {fileID: 8458422110348213840}
 --- !u!114 &6651674100240091244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5450,6 +5581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioAnalyzer
   targetAudio: {fileID: 7870586669602458367}
+  smoothDamp: 1
 --- !u!114 &4114113893753156519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,12 +5594,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad01f9269f0036b4a8695408ee2224ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoteRecorder
-  volumeGate: 0.005
+  volumeGate: 0.05
   volumeTolerance: 0.002
-  recordingTimeGate: 0.3
+  noteSampleMinGate: 0.3
+  silenceGate: 0.5
   recordingState: 0
   recordingSource: {fileID: 7870586669602458367}
   whisperHandler: {fileID: 5194088821656182733}
+  listNotes: 
 --- !u!114 &5194088821656182733
 MonoBehaviour:
   m_ObjectHideFlags: 0

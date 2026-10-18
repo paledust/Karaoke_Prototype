@@ -9,6 +9,7 @@ namespace WhisperPrototype
     {
         [SerializeField] private WhisperHandler whisperHandler;
         [SerializeField] private Animator playerAnime;
+        [SerializeField] private AudioSource whisperSource;
         private const string ANIM_BOOK_TRIGGER = "UseBook";
         
         void Update()
@@ -34,7 +35,7 @@ namespace WhisperPrototype
             if(WhisperingManager.IsWhisperValidAt(index))
             {
                 var whisper = WhisperingManager.GetLearnedWhisper(index);
-                AudioManager.Instance.PlaySFX(whisper.GetClipPlayerKey(), 1);
+                AudioManager.Instance.PlaySFX(whisperSource, whisper.GetClipPlayerKey(), .25f);
                 playerAnime.SetTrigger(ANIM_BOOK_TRIGGER);
                 StartCoroutine(coroutineCastWhisper(whisper));
                 PlayerWhisperingEvent.Call_OnPlayerUseWhisperAtIndex(index);
