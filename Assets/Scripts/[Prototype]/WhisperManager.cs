@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using SimpleSaveSystem;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace WhisperPrototype
 {
@@ -15,23 +18,28 @@ namespace WhisperPrototype
         [SerializeField] private int octave;
 
         private List<WhisperWordData_SO> learnedWhisperData;
+        private Dictionary<string, AudioClip> dictWhisperClip;
 
         public Guid guid => new Guid(byteGuid);
 
         protected override void Awake()
         {
             base.Awake();
+            dictWhisperClip = new Dictionary<string, AudioClip>();
             learnedWhisperData = new List<WhisperWordData_SO>();
         }
 
     #region Save
         public void RestoreState(SaveData state)
         {
-            // var learnedWhisperKey = state.learnedWhisper;
-            // for(int i=0; i<learnedWhisperKey.Count; i++)
-            // {
-            //     UnlockWhisper(whisperWordsCollection.GetDataByKey(learnedWhisperKey[i]));
-            // }
+            var learnedWhisperKey = state.learnedWhisper;
+            for(int i=0; i<learnedWhisperKey.Count; i++)
+            {
+                var data = whisperWordsCollection.GetDataByKey(learnedWhisperKey[i]);
+                StartCoroutine(coroutineLoadWhisperClip(data.GetKey()));
+                learnedWhisperData.Add(data);
+                PlayerWhisperingEvent.Call_OnPlayerLearnedNewWhisper(data);
+            }
         }
         public void CaptureState(ref SaveData saveData)
         {
@@ -95,9 +103,46 @@ namespace WhisperPrototype
         public static void UnlockWhisper(WhisperWordData_SO whisperData)
         {
             Instance.learnedWhisperData.Add(whisperData);
+            PlayerWhisperingEvent.Call_OnPlayerLearnedNewWhisper(whisperData);
+
             var clip = RecordManager.Instance.m_pendingClip;
-            RecordManager.Instance.SaveCurrentClip($"sfx_{whisperData.GetKey()}_player");
+
+            //Save Clip to Dictionary
+            Instance.dictWhisperClip[whisperData.GetKey()] = clip;
             whisperData.AssignClipToPlayerAudioData(clip);
+
+            //Save Clip as .wav file
+            SaveWav.Save(GetPlayerWhisperClipPath(whisperData.GetKey()), clip);
+
+        }
+        IEnumerator coroutineLoadWhisperClip(string whisperKey)
+        {
+            var request = SaveWav.Load(GetPlayerWhisperClipPath(whisperKey));
+            yield return request.SendWebRequest();
+
+            if(request.result == UnityWebRequest.Result.ConnectionError)
+                Debug.LogError("WhisperManager: Audio Request Error:" + request.error);
+            else if(request.isDone && request.error == null)
+            {
+                Debug.LogWarning("Load Clip");
+                var clip = DownloadHandlerAudioClip.GetContent(request);
+                dictWhisperClip[whisperKey] = clip;
+                whisperWordsCollection.GetDataByKey(whisperKey).AssignClipToPlayerAudioData(clip);
+            }
+            else
+            {
+                Debug.LogWarning(">>>>");
+            }
+        }
+        static string GetPlayerWhisperClipPath(string whisperKey)
+        {
+            Debug.LogWarning(whisperKey);
+            string fileName = $"sfx_{whisperKey}_player.wav";
+        #if UNITY_EDITOR
+            return Path.Combine(Application.dataPath + "/AddressableLocal/whisper_clip/", fileName);
+        #else
+            return Path.Combine(Application.persistentDataPath, fileName);
+        #endif
         }
     }
 }

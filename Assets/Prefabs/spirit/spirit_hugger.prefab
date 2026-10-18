@@ -67,6 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpiritComfort
   followSpeed: 1
   spiritHugging: {fileID: 100177058260076416, guid: c31e5e9bed65588449914d7bfcbb1a03, type: 3}
+  renderRoot: {fileID: 486233853814654640}
+  anime: {fileID: 1042507382448406153}
 --- !u!136 &238122656889218125
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -7,12 +7,12 @@ namespace WhisperPrototype.UI
         [SerializeField] private UI_WhisperSlot[] whisperSlots;
         void Start()
         {
-            PlayerWhisperingEvent.E_OnPlayerEndLeanredNewWhisper += LearnNewWhisperHandler;
+            PlayerWhisperingEvent.E_OnPlayerLearnedNewWhisper += LearnNewWhisperHandler;
             PlayerWhisperingEvent.E_OnPlayerUseWhisperAtIndex += UseWhisperHandler;
         }
         void OnDestroy()
         {
-            PlayerWhisperingEvent.E_OnPlayerEndLeanredNewWhisper -= LearnNewWhisperHandler;
+            PlayerWhisperingEvent.E_OnPlayerLearnedNewWhisper -= LearnNewWhisperHandler;
             PlayerWhisperingEvent.E_OnPlayerUseWhisperAtIndex -= UseWhisperHandler;
         }
         void UseWhisperHandler(int index)

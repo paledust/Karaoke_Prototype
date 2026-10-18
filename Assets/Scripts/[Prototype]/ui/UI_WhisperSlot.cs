@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +22,7 @@ namespace WhisperPrototype.UI
         {
             iconWhisper.transform.localScale = Vector3.one;
             iconWhisper.transform.DOKill();
-            iconWhisper.transform.DOPunchScale(Vector3.one * 1.1f, 0.5f).SetEase(Ease.OutBack);
+            iconWhisper.transform.DOPunchScale(Vector3.one * 0.5f, 0.5f).SetEase(Ease.OutBack);
         }
     }
 }

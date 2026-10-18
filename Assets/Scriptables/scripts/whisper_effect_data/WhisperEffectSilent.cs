@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace WhisperPrototype
@@ -6,8 +5,6 @@ namespace WhisperPrototype
     public class WhisperSilence:WhisperEffect
     {
         protected GameObject zonePrefab;
-        protected GameObject zoneInstance;
-        protected Sequence zoneSeq;
         
         public WhisperSilence(float duration, GameObject zonePrefab):base(duration)
         {
@@ -21,6 +18,8 @@ namespace WhisperPrototype
     [CreateAssetMenu(fileName = "WhisperEffectSilent", menuName = "Whisper_Word/Effect/WhisperEffectSilent")]
     public class WhisperEffectSilent : WhisperEffectData_SO
     {
+        [SerializeField] protected GameObject whisper_zone_prefab;
+
         public override WhisperEffect GetWhisperEffect()
         {
             return new WhisperSilence(duration, whisper_zone_prefab);

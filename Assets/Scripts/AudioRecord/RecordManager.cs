@@ -1,14 +1,10 @@
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 public class RecordManager : Singleton<RecordManager>
 {
     [Header("Recording Source")]
     [SerializeField, ShowOnly] private bool isRecording = false;
-    
+
     private string device = "";
     private int deviceIndex = 0;
     private AudioClip pendingClip;
@@ -51,10 +47,5 @@ public class RecordManager : Singleton<RecordManager>
             isRecording = false;
             Microphone.End(device);
         }
-    }
-    public void SaveCurrentClip(string name)
-    {
-        SaveWav.Save(name, pendingClip);
-        pendingClip = null;
     }
 }

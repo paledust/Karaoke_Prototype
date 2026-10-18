@@ -1,8 +1,7 @@
-using System;
+using System.Collections;
 using SimpleAudioSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using WhisperPrototype.UI;
 
 namespace WhisperPrototype
 {
@@ -36,10 +35,15 @@ namespace WhisperPrototype
             {
                 var whisper = WhisperingManager.GetLearnedWhisper(index);
                 AudioManager.Instance.PlaySFX(whisper.GetClipPlayerKey(), 1);
-                whisperHandler.TryCastWhisper(whisper);
                 playerAnime.SetTrigger(ANIM_BOOK_TRIGGER);
+                StartCoroutine(coroutineCastWhisper(whisper));
                 PlayerWhisperingEvent.Call_OnPlayerUseWhisperAtIndex(index);
             }
+        }
+        IEnumerator coroutineCastWhisper(WhisperWordData_SO whisper)
+        {
+            yield return new WaitForSeconds(1f);
+            whisperHandler.TryCastWhisper(whisper);
         }
     }
 }

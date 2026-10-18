@@ -28,19 +28,14 @@ using System;
 using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 public static class SaveWav {
 
 	const int HEADER_SIZE = 44;
 
 	public static bool Save(string filename, AudioClip clip) {
-		if (!filename.ToLower().EndsWith(".wav")) {
-			filename += ".wav";
-		}
-
-		var filepath = Path.Combine(Application.persistentDataPath, filename);
-
-		Debug.Log("SAVEWAVE:"+filepath);
+		var filepath = GetPath(filename);
 
 		// Make sure directory exists if user is saving to sub dir.
 		Directory.CreateDirectory(Path.GetDirectoryName(filepath));
@@ -52,7 +47,20 @@ public static class SaveWav {
 
 		return true; // TODO: return false if there's a failure saving the file
 	}
+	public static UnityWebRequest Load(string filename)
+	{
+		var filepath = GetPath(filename);
+		Debug.Log("LOAD WAVE:"+filepath);
 
+        return UnityWebRequestMultimedia.GetAudioClip(filename, AudioType.WAV);
+	}
+
+	static string GetPath(string filename)
+	{
+		if (!filename.ToLower().EndsWith(".wav")) 
+			filename += ".wav";
+		return filename;
+	}
 	public static AudioClip TrimSilence(AudioClip clip, float min) {
 		var samples = new float[clip.samples];
 		clip.GetData(samples, 0);
