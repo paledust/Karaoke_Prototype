@@ -35,10 +35,13 @@ namespace WhisperPrototype
         }
         public void CaptureState(ref SaveData saveData)
         {
-            saveData.learnedWhisper = new List<string>();
+            var saveWhisper = saveData.learnedWhisper;
+            if(saveWhisper==null)
+                saveWhisper = new List<string>();
             for(int i=0; i<learnedWhisperData.Count; i++)
             {
-                saveData.learnedWhisper.Add(learnedWhisperData[i].GetKey());
+                if(!saveWhisper.Contains(learnedWhisperData[i].GetKey()))
+                    saveWhisper.Add(learnedWhisperData[i].GetKey());
             }
         }
     #endregion

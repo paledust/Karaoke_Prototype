@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6444801061311901364}
   - component: {fileID: 1042507382448406153}
   - component: {fileID: 808882499508692327}
-  - component: {fileID: 7804498467178383931}
+  - component: {fileID: 238122656889218125}
   m_Layer: 0
   m_Name: spirit_hugger
   m_TagString: Untagged
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpiritComfort
   followSpeed: 1
   spiritHugging: {fileID: 100177058260076416, guid: c31e5e9bed65588449914d7bfcbb1a03, type: 3}
---- !u!135 &7804498467178383931
-SphereCollider:
+--- !u!136 &238122656889218125
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -85,9 +85,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5568654364002847692
 GameObject:
   m_ObjectHideFlags: 0
