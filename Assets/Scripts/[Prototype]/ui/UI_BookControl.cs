@@ -14,6 +14,7 @@ namespace WhisperPrototype.UI
         [SerializeField] private BookOfWhisper book;
         [SerializeField] private Button btnBookOpen;
         [SerializeField] private Button btnBookClose;
+        [SerializeField] private CanvasGroup groupBookOpen;
         private CanvasGroup canvasGroup;
         private WhisperWordData_SO pendingWhisper;
 
@@ -52,7 +53,7 @@ namespace WhisperPrototype.UI
             canvasGroup.interactable = false;
             await book.OpenBook(pendingWhisper);
             pendingWhisper = null;
-            btnBookOpen.gameObject.SetActive(false);
+            groupBookOpen.gameObject.SetActive(false);
             btnBookClose.gameObject.SetActive(true);
             canvasGroup.interactable = true;
         }
@@ -61,7 +62,7 @@ namespace WhisperPrototype.UI
             canvasGroup.interactable = false;
             await book.CloseBook();
             btnBookClose.gameObject.SetActive(false);
-            btnBookOpen.gameObject.SetActive(true);
+            groupBookOpen.gameObject.SetActive(true);
             canvasGroup.interactable = true;
         }
     }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dcf620584d83746975f18a9b00eaa3, type: 3}
   m_Name: whisper_effect_comfort
   m_EditorClassIdentifier: Assembly-CSharp::WhisperPrototype.WhisperEffectComfort
-  duration: 7
+  duration: 2
   hugSpiritPrefab: {fileID: 100177058260076416, guid: 415a91b15845fa242898bb63b064238c, type: 3}

@@ -1,10 +1,12 @@
 using System.Runtime.InteropServices;
 using AudioAnalysis;
 using UnityEngine;
+using WhisperPrototype;
 
 public class VoiceDebugger : MonoBehaviour
 {
     [SerializeField] private AudioAnalyzer audioAnalyzer;
+    [SerializeField] private NoteRecorder noteRecorder;
 
     [Header("Draw Line")]
     [SerializeField] private Material mat;
@@ -27,6 +29,16 @@ public class VoiceDebugger : MonoBehaviour
 
     void OnGUI()
     {
+        var notes = noteRecorder.GetNotes();
+        if(notes!=null)
+        {
+            string noteKeys = "";
+            for(int i=0; i<notes.Count; i++)
+            {
+                noteKeys += notes[i] + " ";
+            }
+            GUILayout.Label("Note: " + noteKeys, debugStyle);
+        }
         GUILayout.Label("Freq: " + audioAnalyzer.m_freq.ToString() + "Hz", debugStyle);
         GUILayout.Label("Note: " + audioAnalyzer.m_note, debugStyle);
         GUILayout.Label("Volume Level: " + audioAnalyzer.m_volumeLevel.ToString(), debugStyle);

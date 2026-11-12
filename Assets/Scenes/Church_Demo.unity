@@ -7504,6 +7504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VoiceDebugger
   audioAnalyzer: {fileID: 2064662690}
+  noteRecorder: {fileID: 2064662699}
   mat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &600331221
 GameObject:
@@ -25706,6 +25707,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f6a349d9998ee4ab64ca675268a586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &2064662699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4114113893753156519, guid: 85c5408712dd42f42afa8d5310cbf45d, type: 3}
+  m_PrefabInstance: {fileID: 8374395428249842897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad01f9269f0036b4a8695408ee2224ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoteRecorder
 --- !u!1 &2090361547
 GameObject:
   m_ObjectHideFlags: 0

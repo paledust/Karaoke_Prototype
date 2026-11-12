@@ -1,5 +1,3 @@
-using System;
-using DG.Tweening;
 using UnityEngine;
 using WhisperPrototype.Spirit;
 
@@ -12,6 +10,8 @@ namespace WhisperPrototype
         public WhisperComfort(float duration, GameObject hugSpiritPrefab):base(duration)
         {
             this.hugSpiritPrefab = hugSpiritPrefab;
+            this.duration = duration;
+
         }
         internal override void InitializeWhisper(WhisperHandler caster, Vector3 castPosition, float radius)
         {
@@ -19,7 +19,7 @@ namespace WhisperPrototype
             base.InitializeWhisper(caster, castPosition, radius);
             spiritHugger = GameObject.Instantiate(hugSpiritPrefab).GetComponent<SpiritHugger>();
             spiritHugger.transform.position = caster.transform.position + Vector3.forward * 0.5f;
-            spiritHugger.Init(caster.gameObject);
+            spiritHugger.Init(caster.gameObject, duration);
         }
     }
     [CreateAssetMenu(fileName = "WhisperEffectComfort", menuName = "Whisper_Word/Effect/WhisperEffectComfort")]

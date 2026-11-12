@@ -29,7 +29,7 @@ namespace WhisperPrototype
         private float silenceTimer;
         private int lastRecordedNote;
         private int chantingNote;
-        [SerializeField, ShowOnly] private List<int> listNotes;
+        private List<int> listNotes;
         private AudioAnalyzer audioAnalyzer;
         
         public event Action<WhisperWordData_SO> OnNoteMatchingWhisper;
@@ -139,6 +139,10 @@ namespace WhisperPrototype
             }
             listNotes.Clear();
         }
+        #endregion
+
+        #region Debug
+        public List<int> GetNotes()=>listNotes;
         #endregion
     }
 }
