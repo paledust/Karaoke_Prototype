@@ -342,13 +342,16 @@ Shader "AmplifyShaders/Particles RadiusWave"
 				float4 break12 = tex2D( _MainTex, uv_MainTex );
 				float3 appendResult13 = (float3(break12.r , break12.g , break12.b));
 				float2 uv_NoiseTex = IN.texCoord0.xy * _NoiseTex_ST.xy + _NoiseTex_ST.zw;
+				float3 texCoord272 = IN.texCoord0.xyz;
+				texCoord272.xy = IN.texCoord0.xyz.xy * float2( 1,1 ) + float2( 0,0 );
+				float smoothstepResult275 = smoothstep( 0.5 , 1.0 , texCoord272.z);
 				float _LifeTime_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_LifeTime);
 				#if defined( _INVERSELIFETIMESOURCE_UV_W )
-				float staticSwitch152 = IN.texCoord0.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#elif defined( _INVERSELIFETIMESOURCE_VALUE )
 				float staticSwitch152 = _LifeTime_Instance;
 				#else
-				float staticSwitch152 = IN.texCoord0.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#endif
 				float _NoiseStrength_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_NoiseStrength);
 				float2 texCoord35 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
@@ -715,13 +718,16 @@ Shader "AmplifyShaders/Particles RadiusWave"
 				float4 break12 = tex2D( _MainTex, uv_MainTex );
 				float3 appendResult13 = (float3(break12.r , break12.g , break12.b));
 				float2 uv_NoiseTex = IN.texCoord0.xy * _NoiseTex_ST.xy + _NoiseTex_ST.zw;
+				float3 texCoord272 = IN.texCoord0.xyz;
+				texCoord272.xy = IN.texCoord0.xyz.xy * float2( 1,1 ) + float2( 0,0 );
+				float smoothstepResult275 = smoothstep( 0.5 , 1.0 , texCoord272.z);
 				float _LifeTime_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_LifeTime);
 				#if defined( _INVERSELIFETIMESOURCE_UV_W )
-				float staticSwitch152 = IN.texCoord0.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#elif defined( _INVERSELIFETIMESOURCE_VALUE )
 				float staticSwitch152 = _LifeTime_Instance;
 				#else
-				float staticSwitch152 = IN.texCoord0.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#endif
 				float _NoiseStrength_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_NoiseStrength);
 				float2 texCoord35 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1064,13 +1070,16 @@ Shader "AmplifyShaders/Particles RadiusWave"
 				float4 break12 = tex2D( _MainTex, uv_MainTex );
 				float3 appendResult13 = (float3(break12.r , break12.g , break12.b));
 				float2 uv_NoiseTex = IN.ase_texcoord1.xyz.xy * _NoiseTex_ST.xy + _NoiseTex_ST.zw;
+				float3 texCoord272 = IN.ase_texcoord1.xyz;
+				texCoord272.xy = IN.ase_texcoord1.xyz.xy * float2( 1,1 ) + float2( 0,0 );
+				float smoothstepResult275 = smoothstep( 0.5 , 1.0 , texCoord272.z);
 				float _LifeTime_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_LifeTime);
 				#if defined( _INVERSELIFETIMESOURCE_UV_W )
-				float staticSwitch152 = IN.ase_texcoord1.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#elif defined( _INVERSELIFETIMESOURCE_VALUE )
 				float staticSwitch152 = _LifeTime_Instance;
 				#else
-				float staticSwitch152 = IN.ase_texcoord1.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#endif
 				float _NoiseStrength_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_NoiseStrength);
 				float2 texCoord35 = IN.ase_texcoord1.xyz.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1389,13 +1398,16 @@ Shader "AmplifyShaders/Particles RadiusWave"
 				float4 break12 = tex2D( _MainTex, uv_MainTex );
 				float3 appendResult13 = (float3(break12.r , break12.g , break12.b));
 				float2 uv_NoiseTex = IN.ase_texcoord1.xyz.xy * _NoiseTex_ST.xy + _NoiseTex_ST.zw;
+				float3 texCoord272 = IN.ase_texcoord1.xyz;
+				texCoord272.xy = IN.ase_texcoord1.xyz.xy * float2( 1,1 ) + float2( 0,0 );
+				float smoothstepResult275 = smoothstep( 0.5 , 1.0 , texCoord272.z);
 				float _LifeTime_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_LifeTime);
 				#if defined( _INVERSELIFETIMESOURCE_UV_W )
-				float staticSwitch152 = IN.ase_texcoord1.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#elif defined( _INVERSELIFETIMESOURCE_VALUE )
 				float staticSwitch152 = _LifeTime_Instance;
 				#else
-				float staticSwitch152 = IN.ase_texcoord1.xyz.z;
+				float staticSwitch152 = -smoothstepResult275;
 				#endif
 				float _NoiseStrength_Instance = UNITY_ACCESS_INSTANCED_PROP(AmplifyShadersParticlesRadiusWave,_NoiseStrength);
 				float2 texCoord35 = IN.ase_texcoord1.xyz.xy * float2( 1,1 ) + float2( 0,0 );
@@ -1555,28 +1567,30 @@ Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Cul
 Node;AmplifyShaderEditor.SaturateNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;102;-352,2416;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;104;-368,2544;Inherit;False;Property;_FadeStrength;FadeStrength;20;0;Create;True;0;0;0;False;0;False;1;0.15;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.FunctionNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;181;-2192,1200;Inherit;True;SGradientDissolve;-1;;25;e27ad990a2429b34d8f406fd90200dba;1,26,0;7;29;FLOAT;1;False;24;FLOAT;0;False;22;FLOAT2;0,0;False;17;SAMPLER2D;;False;18;FLOAT;1;False;20;FLOAT;0.5;False;21;FLOAT;0.1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.TextureCoordinatesNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;272;-2256,480;Inherit;False;0;-1;3;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.StaticSwitch, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;258;-4576,816;Inherit;False;Property;_NoiseSpeedControl;NoiseSpeedControl;30;0;Create;True;0;0;0;False;0;False;0;0;0;True;;KeywordEnum;2;Static;Dynamic;Create;True;True;All;9;1;FLOAT2;0,0;False;0;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT2;0,0;False;6;FLOAT2;0,0;False;7;FLOAT2;0,0;False;8;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SaturateNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;183;-1872,976;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;103;-112,2416;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;184;-1888,1200;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;150;-1664.906,-677.972;Inherit;False;Property;_ShimeringFreq;ShimeringFreq;2;0;Create;True;0;0;0;False;0;False;5;2;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SmoothstepOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;275;-1968,464;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0.5;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;136;-4288,816;Inherit;False;noiseTiling;-1;True;1;0;FLOAT2;0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;51;-1344,1312;Inherit;False;Property;_Max;Max;14;0;Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;52;-1360,1232;Inherit;False;Property;_Min;Min;15;0;Create;True;0;0;0;False;0;False;0;0.9;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TexCoordVertexDataNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;83;-1594.027,505.7242;Inherit;False;0;3;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;151;-1664,688;Inherit;False;InstancedProperty;_LifeTime;LifeTime;23;0;Create;True;0;0;0;False;0;False;0;0;-1;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;164;80,2416;Inherit;False;fadeNoise;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;129;-1536,1072;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;146;-1469.906,-675.9719;Inherit;False;1;0;FLOAT;5;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;151;-2048,688;Inherit;False;InstancedProperty;_LifeTime;LifeTime;23;0;Create;True;0;0;0;False;0;False;0;0;-1;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.NegateNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;274;-1552,608;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TexturePropertyNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;30;-2832,-288;Inherit;True;Property;_NoiseTex;NoiseTex;9;0;Create;True;0;0;0;False;0;False;e77e50664873809498937c7f032f4658;97a921d248636704ead1a9dcc3b43211;False;white;Auto;Texture2D;False;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;116;-1664,256;Inherit;True;Property;_TextureSample1;Texture Sample 1;18;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
-Node;AmplifyShaderEditor.StaticSwitch, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;152;-1341.93,625.2985;Inherit;False;Property;_InverseLifeTimeSource;InverseLifeTimeSource;22;0;Create;True;0;0;0;False;0;False;0;0;0;True;;KeywordEnum;2;UV_W;Value;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.GetLocalVarNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;165;-976,1328;Inherit;False;164;fadeNoise;1;0;OBJECT;;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SmoothstepOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;47;-976,1072;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.NoiseGeneratorNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;145;-1267.345,-676.3576;Inherit;True;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;148;-1189.906,-745.9719;Inherit;False;Constant;_Float0;Float 0;20;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;144;-1331.845,-419.9575;Inherit;False;Property;_EmissionShimering;EmissionShimering;1;0;Create;True;0;0;0;False;0;False;0;0.2;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.GetLocalVarNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;137;-1840,-256;Inherit;False;136;noiseTiling;1;0;OBJECT;;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.StaticSwitch, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;152;-1376,624;Inherit;False;Property;_InverseLifeTimeSource;InverseLifeTimeSource;22;0;Create;True;0;0;0;False;0;False;0;0;0;True;;KeywordEnum;2;UV_W;Value;Create;True;True;All;9;1;FLOAT;0;False;0;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;7;FLOAT;0;False;8;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;5;-887.7037,7.445729;Inherit;True;Property;_MainTex;MainTex;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;False;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.SimpleAddOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;111;-944,288;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode, AmplifyShaderEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;98;-720,1200;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -1692,18 +1706,20 @@ WireConnection;183;0;179;0
 WireConnection;103;0;102;0
 WireConnection;103;1;104;0
 WireConnection;184;0;181;0
+WireConnection;275;0;272;3
 WireConnection;136;0;258;0
 WireConnection;164;0;103;0
 WireConnection;129;0;183;0
 WireConnection;129;1;184;0
 WireConnection;146;0;150;0
+WireConnection;274;0;275;0
 WireConnection;116;0;30;0
-WireConnection;152;1;83;3
-WireConnection;152;0;151;0
 WireConnection;47;0;129;0
 WireConnection;47;1;52;0
 WireConnection;47;2;51;0
 WireConnection;145;0;146;0
+WireConnection;152;1;274;0
+WireConnection;152;0;151;0
 WireConnection;111;0;116;1
 WireConnection;111;1;152;0
 WireConnection;98;0;47;0
@@ -1741,4 +1757,4 @@ WireConnection;264;0;263;0
 WireConnection;264;1;155;0
 WireConnection;0;0;264;0
 ASEEND*/
-//CHKSM=D582529D4A718CC35721A8D51EB8616C690329A5
+//CHKSM=92338E03E1A07F308A05F63901D9FE0DC755EDE4

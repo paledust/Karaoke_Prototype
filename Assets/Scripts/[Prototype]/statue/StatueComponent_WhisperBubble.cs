@@ -1,7 +1,6 @@
 using System.Collections;
 using CoroutineUtil;
 using DG.Tweening;
-using SimpleAudioSystem;
 using UnityEngine;
 
 namespace WhisperPrototype.Statue

@@ -114,6 +114,14 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+    - m_Name: clean
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: caa6e7d6-0e49-4021-a067-1fa5db0daab6
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
     m_Bindings:
     - m_Name: Keyboard
       m_Id: 52a09791-3885-4f73-868b-39ccfc9b874b
@@ -179,6 +187,30 @@ MonoBehaviour:
       m_Groups: 
       m_Action: load
       m_Flags: 0
+    - m_Name: One Modifier
+      m_Id: d4d690e5-bdf8-4096-bf0a-1a1bed791067
+      m_Path: OneModifier
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: clean
+      m_Flags: 4
+    - m_Name: modifier
+      m_Id: 04d4bf6c-b1e2-4848-bc58-429ba06624c3
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: clean
+      m_Flags: 8
+    - m_Name: binding
+      m_Id: e27c1632-dc95-4a82-9195-9ce602f5a73a
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: clean
+      m_Flags: 8
 --- !u!1 &6659232793029695398
 GameObject:
   m_ObjectHideFlags: 0

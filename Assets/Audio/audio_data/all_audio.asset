@@ -15,6 +15,7 @@ MonoBehaviour:
   bgm_info_list: []
   amb_info_list:
   - {fileID: 11400000, guid: 20feda7559238d24596ee1517372dd80, type: 2}
+  - {fileID: 11400000, guid: 17f6500173d6a1544b8c075a097cceff, type: 2}
   sfx_info_list:
   - {fileID: 11400000, guid: f746039ae8c774b4c9ff5efc971e8b1e, type: 2}
   - {fileID: 11400000, guid: 7e8e325e85b936e49b248e29deedc3dc, type: 2}
@@ -25,3 +26,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98c0bf5b6a89633458424d3eb4eb7185, type: 2}
   - {fileID: 11400000, guid: d734f18167778804e940f7da8ccaeaa5, type: 2}
   - {fileID: 11400000, guid: 1546ef302c10e0b44947118a5c3ca7d3, type: 2}
+  - {fileID: 11400000, guid: 04c2de9c1f644b34f9964690be4c13da, type: 2}
+  - {fileID: 11400000, guid: 7c0bd04b74bb49249a0e874fa64667db, type: 2}

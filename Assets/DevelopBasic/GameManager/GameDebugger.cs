@@ -17,6 +17,7 @@ namespace GameBasic.Debugger
             debugActions["restart"].performed += Debug_RestartLevel;
             debugActions["save"].performed += Debug_Save;
             debugActions["load"].performed += Debug_Load;
+            debugActions["clean"].performed += Debug_Clean;
         #endif
         }
         void OnDestroy()
@@ -25,19 +26,20 @@ namespace GameBasic.Debugger
             debugActions["restart"].performed -= Debug_RestartLevel;
             debugActions["save"].performed -= Debug_Save;
             debugActions["load"].performed -= Debug_Load;
+            debugActions["clean"].performed -= Debug_Clean;
 
             if(debugActions.enabled)debugActions.Disable();
         #endif
         }
     #region DEBUG ACTION
-        void Debug_RestartLevel(InputAction.CallbackContext callback){
-            if(callback.ReadValueAsButton()){
-                Debug.Log("Test Restart Level");
-                GameManager.Instance.RestartLevel();
-            }
-        }
+        void Debug_RestartLevel(InputAction.CallbackContext callback) => GameManager.Instance.RestartLevel();
         void Debug_Save(InputAction.CallbackContext callback)=>SaveManager.SaveGameState(0).Forget();
         void Debug_Load(InputAction.CallbackContext callback)=>SaveManager.LoadGameState(0);
+        void Debug_Clean(InputAction.CallbackContext callback)
+        {
+            SaveManager.CleanGameState(0);
+            GameManager.Instance.RestartLevel();
+        }
     #endregion
     }
 }

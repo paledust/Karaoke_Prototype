@@ -1,13 +1,13 @@
 ﻿<Solution>
   <Project Path="AmplifyShaderEditor.csproj" />
   <Project Path="spine-unity-examples.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="spine-timeline-editor.csproj" />
   <Project Path="spine-unity-editor.csproj" />
   <Project Path="spine-timeline.csproj" />
   <Project Path="spine-csharp.csproj" />
   <Project Path="DevUtil.csproj" />
   <Project Path="spine-unity.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="DevBasic.StateMachine.csproj" />
   <Project Path="UniTask.Linq.csproj" />
   <Project Path="DevBasic.Guid.csproj" />
